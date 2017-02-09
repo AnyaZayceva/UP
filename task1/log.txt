@@ -1,0 +1,13 @@
+pc1@pc MINGW64 /c/temp/EduPractice (master)
+$ git log
+commit bae950c7537760b537a35aa7d9f43d905de5bf40
+Author: AnyaZajceva <kroszik@gmail.com>
+Date:   Thu Feb 9 21:53:52 2017 +0300
+
+    add status.txt
+
+commit 442504eea2fa07056518de6b4836f43505753890
+Author: AnyaZajceva <kroszik@gmail.com>
+Date:   Thu Feb 9 21:52:40 2017 +0300
+
+    add .gitignore
