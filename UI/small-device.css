@@ -1,6 +1,5 @@
 @media (max-width: 768px) {
 
-
     .authorization {
         width: 50%;
         overflow: auto;
@@ -8,8 +7,9 @@
         margin-top: 0;
         margin-bottom: 0;
     }
-    .filter{
-        position:relative;
+
+    .filter {
+        position: relative;
         text-align: center;
         margin-top: 3%;
         margin-left: 1%;
@@ -19,7 +19,7 @@
         width: 50%;
         overflow: auto;
 
-}
+    }
 
     .add_new {
         position: relative;
@@ -29,13 +29,16 @@
         width: 50%;
         overflow: auto;
     }
+
     .author_filter input, .data_filter input, .tags_filter input {
         width: 100%;
     }
-.add_new_button{
-    width: auto;
-    overflow: auto;
-}
+
+    .add_new_button {
+        width: auto;
+        overflow: auto;
+    }
+
     .news {
         height: 90%;
         width: 90%;
@@ -49,11 +52,5 @@
         display: inline-block;
         padding: 0;
     }
-
-
-
-
-
-
 
 }

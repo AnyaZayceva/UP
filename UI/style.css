@@ -62,9 +62,11 @@ content {
 .add_new_mobile {
     display: none;
 }
-.filter_mobile{
-    display:none;
+
+.filter_mobile {
+    display: none;
 }
+
 .news {
     height: 90%;
     width: 50%;
@@ -113,19 +115,23 @@ content {
     width: 30%;
 
 }
-.tags_list{
+
+.tags_list {
     list-style: none;
 }
-.tags_list li{
+
+.tags_list li {
     display: inline;
 }
-.view{
-    float:right;
+
+.view {
+    float: right;
     margin-left: 6%;
     background-color: #080105;
     color: #ede2db;
     padding: 1% 4% 1% 4%;
 }
+
 .text {
     display: inline-block;
     padding: 0;
