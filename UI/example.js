@@ -187,7 +187,7 @@ articles.getArticles = function (skip, top, filterConfig) {
     if (filterConfig !== undefined) {
         var author_ = filterConfig.author || '';
         var dateFrom_ = filterConfig.dateFrom || new Date('0001-01-01T23:00:00');
-        var dateTo_ = filterConfig.dateTo || new Date('10000-01-01T23:00:00');
+        var dateTo_ = filterConfig.dateTo || new Date('9000-01-01T23:00:00');
         var tags_ = filterConfig.tags || [];
     }
     var news = articles;
