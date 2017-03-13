@@ -340,23 +340,18 @@ var articleModel = (function () {
         removeArticle: removeArticle,
         addTags: addTags,
         deleteTag: deleteTag,
-        tagList: tags
+        tagList: tags,
+        articlesList: GLOBAL_ARTICLES
     };
 }());
 
 var articleRenderer = (function () {
-    var USER;
     var NEW_TEMPLATE;
     var NEWS_NODE;
-    var TAG_TEMPLATE;
-    var TAGS_NODE;
 
     function init() {
         NEW_TEMPLATE = document.querySelector('#template_new');
         NEWS_NODE = document.querySelector('.news');
-        TAG_TEMPLATE = document.querySelector('#template_tag');
-        TAGS_NODE = document.querySelector('.tags_list');
-        USER = document.querySelector(".label");
     };
     function insertArticlesInDOM(articles) {
         var articlesNodes = renderArticles(articles);
@@ -379,9 +374,12 @@ var articleRenderer = (function () {
         if (!template) return;
         template.content.querySelector('.new').dataset.id = article.id;
         template.content.querySelector('.title').textContent = article.title;
-        template.content.querySelector('.text').textContent = article.summary;
+        template.content.querySelector('.text > p').textContent = article.summary;
         template.content.querySelector('.author').textContent = article.author;
         template.content.querySelector('.date').textContent = formatDate(article.createdAt);
+        template.content.querySelector('.text > .picture').setAttribute("src","picture.jpg");
+        template.content.querySelector('.text > .picture').setAttribute("value","Показать полностью...");
+
         return template.content.querySelector('.new').cloneNode(true);
     };
     function formatDate(d) {
