@@ -379,6 +379,13 @@ var articleRenderer = (function () {
         template.content.querySelector('.date').textContent = formatDate(article.createdAt);
         template.content.querySelector('.text > .picture').setAttribute("src","picture.jpg");
         template.content.querySelector('.text > .picture').setAttribute("value","Показать полностью...");
+        template.content.querySelector('.text > ul').innerHTML="";
+        var tagLi;
+        for (var i=0;i<article.tags.length;i++){
+            tagLi = document.createElement('li');
+            tagLi.innerHTML = '#' + article.tags[i]+" ";
+            template.content.querySelector('.text > ul ').appendChild(tagLi);
+        }
 
         return template.content.querySelector('.new').cloneNode(true);
     };
