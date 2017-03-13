@@ -249,7 +249,6 @@ var articleModel = (function () {
             }
         }
         return article;
-        GLOBAL_ARTICLES.find()
     };
     function validateArticle(article, edit) {
         if ((edit === false) && (typeof (article.id) !== 'string' || article.id.length <= 0 || getArticle(article.id) !== undefined)) {
@@ -270,26 +269,32 @@ var articleModel = (function () {
         if (typeof article.content !== 'string' || article.content.length <= 0) {
             return false;
         }
-        /* if (article.tags === undefined || article.tags.length > 5) {
+         if (article.tags === undefined || article.tags.length > 5) {
          return false;
          }
          for (var i = 0; i < article.tags.length; i++) {
-         if (tags.indexOf(article.tags[i]) < 0 || typeof(article.tags[i]) !== "string") {
+         if (typeof(article.tags[i]) !== "string") {
          return false;
          }
-         }*/
+         }
         return true;
     };
     function editArticle(id, article) {
         var currentArticleId = getArticle(id);
-        var newArticle = Object.assign(currentArticleId);
+        var newArticle={} ;
+        Object.assign(newArticle,currentArticleId);
+        console.log(newArticle);
+        console.log(currentArticleId);
         for (var key in article) {
             if ((key !== "id") && (key !== " createdAt") && ((key !== "author")))
                 newArticle[key] = article[key];
         }
+        console.log(newArticle);
+        console.log(currentArticleId);
         if (validateArticle(newArticle, true)) {
-            currentArticleId = newArticle;
+            currentArticleId =  newArticle;
         }
+        console.log(currentArticleId);
     };
     function addArticle(article) {
         if (validateArticle(article, false)) {
@@ -363,7 +368,6 @@ var articleRenderer = (function () {
         });
     };
     function removeArticlesFromDom() {
-        if (!NEWS_NODE) return false;
         NEWS_NODE.innerHTML = '';
     };
     function renderArticles(articles) {
@@ -467,8 +471,7 @@ function removeArticle(id) {
     articleModel.removeArticle(id);
     renderArticles();
 };
-renderArticles();
-editArticle("0", {title: "gcghkvjlvjhvl"});
+editArticle("7", {title: "gcghkvjlvjhvl"});
 removeArticle("5");
 addArticle({
     id: "110",
