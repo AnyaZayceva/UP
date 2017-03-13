@@ -23,7 +23,10 @@ var articleModel = (function () {
         {
             id: '3',
             title: 'Минское «Динамо» обыграло ярославский «Локомотив»',
-            summary: 'Минское «Динамо» обыграло ярославский «Локомотив» в четвертом матче первого раунда плей-офф КХЛ — 4:2',
+            summary: 'Минское «Динамо» обыграло ярославский «Локомотив» в четвертом матче первого раунда плей-офф КХЛ — 4:2Минское «Динамо» обыграло ярославский «Локомотив» в четвертом матче первого раунда плей-офф КХЛ — 4:2' +
+            'Минское «Динамо» обыграло ярославский «Локомотив» в четвертом матче первого раунда плей-офф КХЛ — 4:2' +
+            'Минское «Динамо» обыграло ярославский «Локомотив» в четвертом матче первого раунда плей-офф КХЛ — 4:2' +
+            'Минское «Динамо» обыграло ярославский «Локомотив» в четвертом матче первого раунда плей-офф КХЛ — 4:2',
             createdAt: new Date('2018-10-23T23:00:00'),
             author: 'Борисенко Борис',
             content: 'Гости создали больше опасных моментов и в два раза перебросали минчан, но «зубры» на этот раз очень эффективно использовали свои моменты.',
@@ -374,17 +377,19 @@ var articleRenderer = (function () {
         if (!template) return;
         template.content.querySelector('.new').dataset.id = article.id;
         template.content.querySelector('.title').textContent = article.title;
-        template.content.querySelector('.text > p').textContent = article.summary;
+        template.content.querySelector('.text > .text_value').textContent = article.summary;
         template.content.querySelector('.author').textContent = article.author;
         template.content.querySelector('.date').textContent = formatDate(article.createdAt);
         template.content.querySelector('.text > .picture').setAttribute("src","picture.jpg");
         template.content.querySelector('.text > .picture').setAttribute("value","Показать полностью...");
         template.content.querySelector('.text > ul').innerHTML="";
-        var tagLi;
-        for (var i=0;i<article.tags.length;i++){
-            tagLi = document.createElement('li');
-            tagLi.innerHTML = '#' + article.tags[i]+" ";
-            template.content.querySelector('.text > ul ').appendChild(tagLi);
+        if(article.tags!==undefined) {
+            var tagLi;
+            for (var i = 0; i < article.tags.length; i++) {
+                tagLi = document.createElement('li');
+                tagLi.innerHTML = '#' + article.tags[i] + " ";
+                template.content.querySelector('.text > ul ').appendChild(tagLi);
+            }
         }
 
         return template.content.querySelector('.new').cloneNode(true);
@@ -428,6 +433,9 @@ function removeTag(tag) {
     tagList.innerHTML = '';
     var tagOption;
     articleModel.deleteTag(tag);
+    tagOption = document.createElement('option');
+    tagOption.innerHTML = 'Тэги';
+    tagList.appendChild(tagOption);
     articleModel.tagList.forEach(function (tag) {
         tagOption = document.createElement('option');
         tagOption.innerHTML = '#' + tag;
