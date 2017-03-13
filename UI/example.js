@@ -283,18 +283,13 @@ var articleModel = (function () {
         var currentArticleId = getArticle(id);
         var newArticle={} ;
         Object.assign(newArticle,currentArticleId);
-        console.log(newArticle);
-        console.log(currentArticleId);
         for (var key in article) {
             if ((key !== "id") && (key !== " createdAt") && ((key !== "author")))
                 newArticle[key] = article[key];
         }
-        console.log(newArticle);
-        console.log(currentArticleId);
         if (validateArticle(newArticle, true)) {
             currentArticleId =  newArticle;
         }
-        console.log(currentArticleId);
     };
     function addArticle(article) {
         if (validateArticle(article, false)) {
