@@ -1,349 +1,467 @@
-var articles = [
-    {
-        id: '1',
-        title: 'Минское «Динамо» обыграло ярославский «Локомотив»',
-        summary: 'T44-ая ракетка мира согласилась провести время с фанатом, если клуб «Нью-Инглэнд Пэтриотс» станет победителем Супербоула.',
-        createdAt: new Date('2017-03-20T23:00:00'),
-        author: 'Петр Петров',
-        content: 'Гости создали больше опасных моментов и в два раза перебросали минчан, но «зубры» на этот раз очень эффективно использовали свои моменты.',
-        tags: ["здоровье", "политика"]
-    },
-    {
-        id: '2',
-        title: 'Минское «Динамо» обыграло ярославский «Локомотив»',
-        summary: 'Минское «Динамо» обыграло ярославский «Локомотив» в четвертом матче первого раунда плей-офф КХЛ — 4:2',
-        createdAt: new Date('2016-01-31T23:00:00'),
-        author: 'Иван Иванов',
-        content: 'Гости создали больше опасных моментов и в два раза перебросали минчан, но «зубры» на этот раз очень эффективно использовали свои моменты.',
-        tags: ["наука"]
-    },
-    {
-        id: '3',
-        title: 'Минское «Динамо» обыграло ярославский «Локомотив»',
-        summary: 'Минское «Динамо» обыграло ярославский «Локомотив» в четвертом матче первого раунда плей-офф КХЛ — 4:2',
-        createdAt: new Date('2018-10-23T23:00:00'),
-        author: 'Борисенко Борис',
-        content: 'Гости создали больше опасных моментов и в два раза перебросали минчан, но «зубры» на этот раз очень эффективно использовали свои моменты.',
-        tags: ["мода", "здоровье"]
-    },
-    {
-        id: '4',
-        title: 'Минское «Динамо» обыграло ярославский «Локомотив»',
-        summary: 'Минское «Динамо» обыграло ярославский «Локомотив» в четвертом матче первого раунда плей-офф КХЛ — 4:2',
-        createdAt: new Date('2014-02-27T23:00:00'),
-        author: 'Николаев Николай',
-        content: 'Гости создали больше опасных моментов и в два раза перебросали минчан, но «зубры» на этот раз очень эффективно использовали свои моменты.',
-        tags: ["спорт"]
-    },
-    {
-        id: '5',
-        title: 'Минское «Динамо» обыграло ярославский «Локомотив»',
-        summary: 'Минское «Динамо» обыграло ярославский «Локомотив» в четвертом матче первого раунда плей-офф КХЛ — 4:2',
-        createdAt: new Date('2011-06-07T23:00:00'),
-        author: 'Иванов Ваня',
-        content: 'Гости создали больше опасных моментов и в два раза перебросали минчан, но «зубры» на этот раз очень эффективно использовали свои моменты.',
-        tags: ["политика"]
-    },
-    {
-        id: '6',
-        title: 'Минское «Динамо» обыграло ярославский «Локомотив»',
-        summary: 'Минское «Динамо» обыграло ярославский «Локомотив» в четвертом матче первого раунда плей-офф КХЛ — 4:2',
-        createdAt: new Date('2010-09-01T23:00:00'),
-        author: 'Сергей Степанов',
-        content: 'Гости создали больше опасных моментов и в два раза перебросали минчан, но «зубры» на этот раз очень эффективно использовали свои моменты.',
-        tags: ["здоровье", "мода"]
-    },
-    {
-        id: '7',
-        title: 'Минское «Динамо» обыграло ярославский «Локомотив»',
-        summary: 'Минское «Динамо» обыграло ярославский «Локомотив» в четвертом матче первого раунда плей-офф КХЛ — 4:2',
-        createdAt: new Date('2022-03-25T23:00:00'),
-        author: 'Солдатенко Владислав',
-        content: 'Гости создали больше опасных моментов и в два раза перебросали минчан, но «зубры» на этот раз очень эффективно использовали свои моменты.',
-        tags: ["политика", "наука"]
-    },
-    {
-        id: '8',
-        title: 'Минское «Динамо» обыграло ярославский «Локомотив»',
-        summary: 'Минское «Динамо» обыграло ярославский «Локомотив» в четвертом матче первого раунда плей-офф КХЛ — 4:2',
-        createdAt: new Date('1999-07-28T23:00:00'),
-        author: 'Дмитриенко Дмитрий',
-        content: 'Гости создали больше опасных моментов и в два раза перебросали минчан, но «зубры» на этот раз очень эффективно использовали свои моменты.',
-        tags: ["спорт", "здоровье"]
-    },
-    {
-        id: '9',
-        title: 'Минское «Динамо» обыграло ярославский «Локомотив»',
-        summary: 'Минское «Динамо» обыграло ярославский «Локомотив» в четвертом матче первого раунда плей-офф КХЛ — 4:2',
-        createdAt: new Date('2003-11-07T23:00:00'),
-        author: 'Степанов Степан',
-        content: 'Гости создали больше опасных моментов и в два раза перебросали минчан, но «зубры» на этот раз очень эффективно использовали свои моменты.',
-        tags: ["политика", "спорт"]
-    },
-    {
-        id: '10',
-        title: 'Минское «Динамо» обыграло ярославский «Локомотив»',
-        summary: 'Минское «Динамо» обыграло ярославский «Локомотив» в четвертом матче первого раунда плей-офф КХЛ — 4:2',
-        createdAt: new Date('2003-08-30T23:00:00'),
-        author: 'Лебедев Дмитрий',
-        content: 'Гости создали больше опасных моментов и в два раза перебросали минчан, но «зубры» на этот раз очень эффективно использовали свои моменты.',
-        tags: ["политика", "спорт"]
-    },
-    {
-        id: '11',
-        title: 'Минское «Динамо» обыграло ярославский «Локомотив»',
-        summary: 'Минское «Динамо» обыграло ярославский «Локомотив» в четвертом матче первого раунда плей-офф КХЛ — 4:2',
-        createdAt: new Date('2017-04-01T23:00:00'),
-        author: 'Бриткин Павел',
-        content: 'Гости создали больше опасных моментов и в два раза перебросали минчан, но «зубры» на этот раз очень эффективно использовали свои моменты.',
-        tags: ["здоровье", "политика"]
-    },
-    {
-        id: '12',
-        title: 'Минское «Динамо» обыграло ярославский «Локомотив»',
-        summary: 'Минское «Динамо» обыграло ярославский «Локомотив» в четвертом матче первого раунда плей-офф КХЛ — 4:2',
-        createdAt: new Date('2016-03-08T23:00:00'),
-        author: 'Сидоров Пётр',
-        content: 'Гости создали больше опасных моментов и в два раза перебросали минчан, но «зубры» на этот раз очень эффективно использовали свои моменты.',
-        tags: ["наука"]
-    },
-    {
-        id: '13',
-        title: 'Минское «Динамо» обыграло ярославский «Локомотив»',
-        summary: 'Минское «Динамо» обыграло ярославский «Локомотив» в четвертом матче первого раунда плей-офф КХЛ — 4:2',
-        createdAt: new Date('2018-02-23T23:00:00'),
-        author: 'Евсеенко Наталья',
-        content: 'Гости создали больше опасных моментов и в два раза перебросали минчан, но «зубры» на этот раз очень эффективно использовали свои моменты.',
-        tags: ["мода", "здоровье"]
-    },
-    {
-        id: '14',
-        title: 'Минское «Динамо» обыграло ярославский «Локомотив»',
-        summary: 'Минское «Динамо» обыграло ярославский «Локомотив» в четвертом матче первого раунда плей-офф КХЛ — 4:2',
-        createdAt: new Date('2014-05-01T23:00:00'),
-        author: 'Котов Николай',
-        content: 'Гости создали больше опасных моментов и в два раза перебросали минчан, но «зубры» на этот раз очень эффективно использовали свои моменты.',
-        tags: ["спорт"]
-    },
-    {
-        id: '15',
-        title: 'Минское «Динамо» обыграло ярославский «Локомотив»',
-        summary: 'Минское «Динамо» обыграло ярославский «Локомотив» в четвертом матче первого раунда плей-офф КХЛ — 4:2',
-        createdAt: new Date('2011-06-07T23:00:00'),
-        author: 'Волков Даниил',
-        content: 'Гости создали больше опасных моментов и в два раза перебросали минчан, но «зубры» на этот раз очень эффективно использовали свои моменты.',
-        tags: ["политика"]
-    },
-    {
-        id: '16',
-        title: 'Минское «Динамо» обыграло ярославский «Локомотив»',
-        summary: 'Минское «Динамо» обыграло ярославский «Локомотив» в четвертом матче первого раунда плей-офф КХЛ — 4:2',
-        createdAt: new Date('2010-04-21T23:00:00'),
-        author: 'Кот Александра',
-        content: 'Гости создали больше опасных моментов и в два раза перебросали минчан, но «зубры» на этот раз очень эффективно использовали свои моменты.',
-        tags: ["здоровье", "мода"]
-    },
-    {
-        id: '17',
-        title: 'Минское «Динамо» обыграло ярославский «Локомотив»',
-        summary: 'Минское «Динамо» обыграло ярославский «Локомотив» в четвертом матче первого раунда плей-офф КХЛ — 4:2',
-        createdAt: new Date('2022-02-13T23:00:00'),
-        author: 'Мамченко Евстафий',
-        content: 'Гости создали больше опасных моментов и в два раза перебросали минчан, но «зубры» на этот раз очень эффективно использовали свои моменты.',
-        tags: ["политика", "наука"]
-    },
-    {
-        id: '18',
-        title: 'Минское «Динамо» обыграло ярославский «Локомотив»',
-        summary: 'Минское «Динамо» обыграло ярославский «Локомотив» в четвертом матче первого раунда плей-офф КХЛ — 4:2',
-        createdAt: new Date('1999-01-01T23:00:00'),
-        author: 'Владимир Ленин',
-        content: 'Гости создали больше опасных моментов и в два раза перебросали минчан, но «зубры» на этот раз очень эффективно использовали свои моменты.',
-        tags: ["спорт", "здоровье"]
-    },
-    {
-        id: '19',
-        title: 'Минское «Динамо» обыграло ярославский «Локомотив»',
-        summary: 'Минское «Динамо» обыграло ярославский «Локомотив» в четвертом матче первого раунда плей-офф КХЛ — 4:2',
-        createdAt: new Date('2003-10-20T23:00:00'),
-        author: 'Иосиф Сталин',
-        content: 'Гости создали больше опасных моментов и в два раза перебросали минчан, но «зубры» на этот раз очень эффективно использовали свои моменты.',
-        tags: ["политика", "спорт"]
-    },
-    {
-        id: '20',
-        title: 'Минское «Динамо» обыграло ярославский «Локомотив»',
-        summary: 'Минское «Динамо» обыграло ярославский «Локомотив» в четвертом матче первого раунда плей-офф КХЛ — 4:2',
-        createdAt: new Date('2117-12-31T23:00:00'),
-        author: 'Иванов Иван',
-        content: 'Гости создали больше опасных моментов и в два раза перебросали минчан, но «зубры» на этот раз очень эффективно использовали свои моменты.',
-        tags: ["мода", "наука"]
-    }
-];
-var tags = ['здоровье', 'политика', 'мода', 'спорт', 'наука'];
-articles.getArticles = function (skip, top, filterConfig) {
-    skip = skip || 0;
-    top = top || 10;
-    if (filterConfig !== undefined) {
-        var author_ = filterConfig.author || '';
-        var dateFrom_ = filterConfig.dateFrom || new Date('0001-01-01T23:00:00');
-        var dateTo_ = filterConfig.dateTo || new Date('9000-01-01T23:00:00');
-        var tags_ = filterConfig.tags || [];
-    }
-    var news = articles;
-    if (filterConfig !== undefined) {
-        news = news.filter(function (item) {
-            if (item.author.indexOf(author_) >= 0)
-                return item;
-        });
-        news = news.filter(function (item) {
-            if (item.createdAt >= dateFrom_ && item.createdAt <= dateTo_)
-                return item;
-        });
-    }
-    news = news.sort(function (firstItem, secondItem) {
-        if (firstItem.createdAt > secondItem.createdAt) {
-            return -1;
-        }
-        if (firstItem.createdAt < secondItem.createdAt) {
-            return 1;
-        }
-    }).slice(skip, skip + top);
-    return news;
-};
+var articleModel = (function () {
+    var GLOBAL_ARTICLES = [
+        {
+            id: '1',
+            title: 'Минское «Динамо» обыграло ярославский «Локомотив»',
+            summary: 'T44-ая ракетка мира согласилась провести время с фанатом, если клуб «Нью-Инглэнд Пэтриотс» станет победителем Супербоула.',
+            createdAt: new Date('2017-03-20T23:00:00'),
+            author: 'Петр Петров',
+            content: 'Гости создали больше опасных моментов и в два раза перебросали минчан, но «зубры» на этот раз очень эффективно использовали свои моменты.',
+            tags: ["здоровье", "политика"],
+            picture: "picture.jpg"
+        },
+        {
+            id: '2',
+            title: 'Минское «Динамо» обыграло ярославский «Локомотив»',
+            summary: 'Минское «Динамо» обыграло ярославский «Локомотив» в четвертом матче первого раунда плей-офф КХЛ — 4:2',
+            createdAt: new Date('2016-01-31T23:00:00'),
+            author: 'Иван Иванов',
+            content: 'Гости создали больше опасных моментов и в два раза перебросали минчан, но «зубры» на этот раз очень эффективно использовали свои моменты.',
+            tags: ["наука"],
+            picture: "picture.jpg"
+        },
+        {
+            id: '3',
+            title: 'Минское «Динамо» обыграло ярославский «Локомотив»',
+            summary: 'Минское «Динамо» обыграло ярославский «Локомотив» в четвертом матче первого раунда плей-офф КХЛ — 4:2',
+            createdAt: new Date('2018-10-23T23:00:00'),
+            author: 'Борисенко Борис',
+            content: 'Гости создали больше опасных моментов и в два раза перебросали минчан, но «зубры» на этот раз очень эффективно использовали свои моменты.',
+            tags: ["мода", "здоровье"],
+            picture: "picture.jpg"
+        },
+        {
+            id: '4',
+            title: 'Минское «Динамо» обыграло ярославский «Локомотив»',
+            summary: 'Минское «Динамо» обыграло ярославский «Локомотив» в четвертом матче первого раунда плей-офф КХЛ — 4:2',
+            createdAt: new Date('2014-02-27T23:00:00'),
+            author: 'Николаев Николай',
+            content: 'Гости создали больше опасных моментов и в два раза перебросали минчан, но «зубры» на этот раз очень эффективно использовали свои моменты.',
+            tags: ["спорт"],
+            picture: "picture.jpg"
+        },
+        {
+            id: '5',
+            title: 'Минское «Динамо» обыграло ярославский «Локомотив»',
+            summary: 'Минское «Динамо» обыграло ярославский «Локомотив» в четвертом матче первого раунда плей-офф КХЛ — 4:2',
+            createdAt: new Date('2011-06-07T23:00:00'),
+            author: 'Иванов Ваня',
+            content: 'Гости создали больше опасных моментов и в два раза перебросали минчан, но «зубры» на этот раз очень эффективно использовали свои моменты.',
+            tags: ["политика"],
+            picture: "picture.jpg"
+        },
+        {
+            id: '6',
+            title: 'Минское «Динамо» обыграло ярославский «Локомотив»',
+            summary: 'Минское «Динамо» обыграло ярославский «Локомотив» в четвертом матче первого раунда плей-офф КХЛ — 4:2',
+            createdAt: new Date('2010-09-01T23:00:00'),
+            author: 'Сергей Степанов',
+            content: 'Гости создали больше опасных моментов и в два раза перебросали минчан, но «зубры» на этот раз очень эффективно использовали свои моменты.',
+            tags: ["здоровье", "мода"],
+            picture: "picture.jpg"
+        },
+        {
+            id: '7',
+            title: 'Минское «Динамо» обыграло ярославский «Локомотив»',
+            summary: 'Минское «Динамо» обыграло ярославский «Локомотив» в четвертом матче первого раунда плей-офф КХЛ — 4:2',
+            createdAt: new Date('2022-03-25T23:00:00'),
+            author: 'Солдатенко Владислав',
+            content: 'Гости создали больше опасных моментов и в два раза перебросали минчан, но «зубры» на этот раз очень эффективно использовали свои моменты.',
+            tags: ["политика", "наука"],
+            picture: "picture.jpg"
+        },
+        {
+            id: '8',
+            title: 'Минское «Динамо» обыграло ярославский «Локомотив»',
+            summary: 'Минское «Динамо» обыграло ярославский «Локомотив» в четвертом матче первого раунда плей-офф КХЛ — 4:2',
+            createdAt: new Date('1999-07-28T23:00:00'),
+            author: 'Дмитриенко Дмитрий',
+            content: 'Гости создали больше опасных моментов и в два раза перебросали минчан, но «зубры» на этот раз очень эффективно использовали свои моменты.',
+            tags: ["спорт", "здоровье"],
+            picture: "picture.jpg"
+        },
+        {
+            id: '9',
+            title: 'Минское «Динамо» обыграло ярославский «Локомотив»',
+            summary: 'Минское «Динамо» обыграло ярославский «Локомотив» в четвертом матче первого раунда плей-офф КХЛ — 4:2',
+            createdAt: new Date('2003-11-07T23:00:00'),
+            author: 'Степанов Степан',
+            content: 'Гости создали больше опасных моментов и в два раза перебросали минчан, но «зубры» на этот раз очень эффективно использовали свои моменты.',
+            tags: ["политика", "спорт"],
+            picture: "picture.jpg"
+        },
+        {
+            id: '10',
+            title: 'Минское «Динамо» обыграло ярославский «Локомотив»',
+            summary: 'Минское «Динамо» обыграло ярославский «Локомотив» в четвертом матче первого раунда плей-офф КХЛ — 4:2',
+            createdAt: new Date('2003-08-30T23:00:00'),
+            author: 'Лебедев Дмитрий',
+            content: 'Гости создали больше опасных моментов и в два раза перебросали минчан, но «зубры» на этот раз очень эффективно использовали свои моменты.',
+            tags: ["политика", "спорт"],
+            picture: "picture.jpg"
+        },
+        {
+            id: '11',
+            title: 'Минское «Динамо» обыграло ярославский «Локомотив»',
+            summary: 'Минское «Динамо» обыграло ярославский «Локомотив» в четвертом матче первого раунда плей-офф КХЛ — 4:2',
+            createdAt: new Date('2017-04-01T23:00:00'),
+            author: 'Бриткин Павел',
+            content: 'Гости создали больше опасных моментов и в два раза перебросали минчан, но «зубры» на этот раз очень эффективно использовали свои моменты.',
+            tags: ["здоровье", "политика"],
+            picture: "picture.jpg"
+        },
+        {
+            id: '12',
+            title: 'Минское «Динамо» обыграло ярославский «Локомотив»',
+            summary: 'Минское «Динамо» обыграло ярославский «Локомотив» в четвертом матче первого раунда плей-офф КХЛ — 4:2',
+            createdAt: new Date('2016-03-08T23:00:00'),
+            author: 'Сидоров Пётр',
+            content: 'Гости создали больше опасных моментов и в два раза перебросали минчан, но «зубры» на этот раз очень эффективно использовали свои моменты.',
+            tags: ["наука"],
+            picture: "picture.jpg"
+        },
+        {
+            id: '13',
+            title: 'Минское «Динамо» обыграло ярославский «Локомотив»',
+            summary: 'Минское «Динамо» обыграло ярославский «Локомотив» в четвертом матче первого раунда плей-офф КХЛ — 4:2',
+            createdAt: new Date('2018-02-23T23:00:00'),
+            author: 'Евсеенко Наталья',
+            content: 'Гости создали больше опасных моментов и в два раза перебросали минчан, но «зубры» на этот раз очень эффективно использовали свои моменты.',
+            tags: ["мода", "здоровье"],
+            picture: "picture.jpg"
+        },
+        {
+            id: '14',
+            title: 'Минское «Динамо» обыграло ярославский «Локомотив»',
+            summary: 'Минское «Динамо» обыграло ярославский «Локомотив» в четвертом матче первого раунда плей-офф КХЛ — 4:2',
+            createdAt: new Date('2014-05-01T23:00:00'),
+            author: 'Котов Николай',
+            content: 'Гости создали больше опасных моментов и в два раза перебросали минчан, но «зубры» на этот раз очень эффективно использовали свои моменты.',
+            tags: ["спорт"],
+            picture: "picture.jpg"
+        },
+        {
+            id: '15',
+            title: 'Минское «Динамо» обыграло ярославский «Локомотив»',
+            summary: 'Минское «Динамо» обыграло ярославский «Локомотив» в четвертом матче первого раунда плей-офф КХЛ — 4:2',
+            createdAt: new Date('2011-06-07T23:00:00'),
+            author: 'Волков Даниил',
+            content: 'Гости создали больше опасных моментов и в два раза перебросали минчан, но «зубры» на этот раз очень эффективно использовали свои моменты.',
+            tags: ["политика"],
+            picture: "picture.jpg"
+        },
+        {
+            id: '16',
+            title: 'Минское «Динамо» обыграло ярославский «Локомотив»',
+            summary: 'Минское «Динамо» обыграло ярославский «Локомотив» в четвертом матче первого раунда плей-офф КХЛ — 4:2',
+            createdAt: new Date('2010-04-21T23:00:00'),
+            author: 'Кот Александра',
+            content: 'Гости создали больше опасных моментов и в два раза перебросали минчан, но «зубры» на этот раз очень эффективно использовали свои моменты.',
+            tags: ["здоровье", "мода"],
+            picture: "picture.jpg"
+        },
+        {
+            id: '17',
+            title: 'Минское «Динамо» обыграло ярославский «Локомотив»',
+            summary: 'Минское «Динамо» обыграло ярославский «Локомотив» в четвертом матче первого раунда плей-офф КХЛ — 4:2',
+            createdAt: new Date('2022-02-13T23:00:00'),
+            author: 'Мамченко Евстафий',
+            content: 'Гости создали больше опасных моментов и в два раза перебросали минчан, но «зубры» на этот раз очень эффективно использовали свои моменты.',
+            tags: ["политика", "наука"],
+            picture: "picture.jpg"
+        },
+        {
+            id: '18',
+            title: 'Минское «Динамо» обыграло ярославский «Локомотив»',
+            summary: 'Минское «Динамо» обыграло ярославский «Локомотив» в четвертом матче первого раунда плей-офф КХЛ — 4:2',
+            createdAt: new Date('1999-01-01T23:00:00'),
+            author: 'Владимир Ленин',
+            content: 'Гости создали больше опасных моментов и в два раза перебросали минчан, но «зубры» на этот раз очень эффективно использовали свои моменты.',
+            tags: ["спорт", "здоровье"],
+            picture: "picture.jpg"
+        },
+        {
+            id: '19',
+            title: 'Минское «Динамо» обыграло ярославский «Локомотив»',
+            summary: 'Минское «Динамо» обыграло ярославский «Локомотив» в четвертом матче первого раунда плей-офф КХЛ — 4:2',
+            createdAt: new Date('2003-10-20T23:00:00'),
+            author: 'Иосиф Сталин',
+            content: 'Гости создали больше опасных моментов и в два раза перебросали минчан, но «зубры» на этот раз очень эффективно использовали свои моменты.',
+            tags: ["политика", "спорт"],
+            picture: "picture.jpg"
+        },
+        {
+            id: '20',
+            title: 'Минское «Динамо» обыграло ярославский «Локомотив»',
+            summary: 'Минское «Динамо» обыграло ярославский «Локомотив» в четвертом матче первого раунда плей-офф КХЛ — 4:2',
+            createdAt: new Date('2117-12-31T23:00:00'),
+            author: 'Иван Иванов',
+            content: 'Гости создали больше опасных моментов и в два раза перебросали минчан, но «зубры» на этот раз очень эффективно использовали свои моменты.',
+            tags: ["мода", "наука"],
+            picture: "picture.jpg"
+        }];
+    var tags = [];
 
-articles.getArticle = function (id) {
-    var article;
-    for (var i = 0; i < articles.length; i++) {
-        if (articles[i].id == id) {
-            article = articles[i];
-            return article;
+    function getArticles(skip, top, filterConfig) {
+        var skip = skip || 0;
+        var top = top || 10;
+        var currentArticles = GLOBAL_ARTICLES;
+        if (filterConfig !== undefined) {
+            if (filterConfig.author !== undefined) {
+                currentArticles = currentArticles.filter(function (item) {
+                    return item.author === filterConfig.author;
+                })
+            }
+            if (filterConfig.dateFrom !== undefined) {
+                currentArticles = currentArticles.filter(function (item) {
+                    return item.createdAt >= filterConfig.dateFrom;
+                })
+            }
+            if (filterConfig.dateTo !== undefined) {
+                currentArticles = currentArticles.filter(function (element) {
+                    return element.createdAt <= filterConfig.dateTo;
+                })
+            }
+            if (filterConfig.tags !== undefined && filterConfig.tags.length > 0) {
+                currentArticles = currentArticles.filter(function (item) {
+                    for (var i = 0; i < filterConfig.tags.length; i++) {
+                        if (item.tags === filterConfig.tags[i]) {
+                            return item;
+                        }
+                    }
+                })
+            }
         }
-    }
-    return article;
-};
-validateArticle = function (article, edit) {
-    if ((edit === false) && (typeof (article.id) !== 'string' || article.id.length <= 0 || articles.getArticle(article.id) !== undefined)) return false;
-    if (typeof (article.title) !== 'string' || article.title.length > 100 || article.title.length <= 0) return false;
-    if (typeof (article.summary) !== 'string' || article.summary.length > 200)return false;
-    if ((article.createdAt instanceof Date) !== true)return false;
-    if (typeof article.author !== 'string' || article.author.length <= 0) return false;
-    if (typeof article.content !== 'string' || article.content.length <= 0) return false;
-    return true;
-};
-articles.editArticle = function (id, article) {
-    var newArticle = articles.getArticle(id);
-    if ((newArticle) === undefined) {
-        return false;
-    }
-    if (article.title !== undefined) {
-        newArticle.title = article.title;
-    }
-    if (article.summary !== undefined) {
-        newArticle.summary = article.summary;
-    }
-    if (article.content !== undefined) {
-        newArticle.content = article.content;
-    }
-    if (article.tags !== undefined) {
-        newArticle.tags = article.tags;
-    }
-    if (validateArticle(newArticle, true) === true) {
-        articles.getArticle(id).title = newArticle.title;
-        articles.getArticle(id).summary = newArticle.summary;
-        articles.getArticle(id).content = newArticle.content;
-        articles.getArticle(id).tags = newArticle.tags;
+        currentArticles = currentArticles.sort(function (firstItem, secondItem) {
+            return secondItem.createdAt - firstItem.createdAt;
+        });
+        return currentArticles.slice(skip, skip + top);
+    };
+    function getArticle(id) {
+        var article;
+        for (var i = 0; i < GLOBAL_ARTICLES.length; i++) {
+            if (GLOBAL_ARTICLES[i].id == id) {
+                article = GLOBAL_ARTICLES[i];
+                return article;
+            }
+        }
+        return article;
+        GLOBAL_ARTICLES.find()
+    };
+    function validateArticle(article, edit) {
+        if ((edit === false) && (typeof (article.id) !== 'string' || article.id.length <= 0 || getArticle(article.id) !== undefined)) {
+            return false;
+        }
+        if (typeof (article.title) !== 'string' || article.title.length > 100 || article.title.length <= 0) {
+            return false;
+        }
+        if (typeof (article.summary) !== 'string' || article.summary.length > 200) {
+            return false;
+        }
+        if ((article.createdAt instanceof Date) !== true) {
+            return false;
+        }
+        if (typeof article.author !== 'string' || article.author.length <= 0) {
+            return false;
+        }
+        if (typeof article.content !== 'string' || article.content.length <= 0) {
+            return false;
+        }
+        /* if (article.tags === undefined || article.tags.length > 5) {
+         return false;
+         }
+         for (var i = 0; i < article.tags.length; i++) {
+         if (tags.indexOf(article.tags[i]) < 0 || typeof(article.tags[i]) !== "string") {
+         return false;
+         }
+         }*/
         return true;
-    }
-    return false;
+    };
+    function editArticle(id, article) {
+        var currentArticleId = getArticle(id);
+        var newArticle = Object.assign(currentArticleId);
+        for (var key in article) {
+            if ((key !== "id") && (key !== " createdAt") && ((key !== "author")))
+                newArticle[key] = article[key];
+        }
+        if (validateArticle(newArticle, true)) {
+            currentArticleId = newArticle;
+        }
+    };
+    function addArticle(article) {
+        if (validateArticle(article, false)) {
+            GLOBAL_ARTICLES.push(article);
+            return true;
+        }
+        else {
+            return false;
+        }
+    };
+    function removeArticle(id) {
+        var indexRemove = -1;
+        for (var i = 0; i < GLOBAL_ARTICLES.length; i++) {
+            if (GLOBAL_ARTICLES[i].id == id) {
+                indexRemove = i;
+            }
+        }
+        if (indexRemove == -1) {
+            return false;
+        }
+        GLOBAL_ARTICLES.splice(indexRemove, 1);
+        return true;
+    };
+    function containsTag(tag) {
+        for (var i = 0; i < tags.length; i++) {
+            if (tags[i] === tag)
+                return i;
+        }
+        return -1;
+    };
+    function addTags(tagsForAdd) {
+        tagsForAdd.forEach(function (tag) {
+            if (tags.indexOf(tag) === -1) tags.push(tag);
+        })
+    };
+    function deleteTag(tagForDelete) {
+        if (tagForDelete !== undefined) {
+            var indexRemove = tags.indexOf(tagForDelete)
+            if (indexRemove !== -1) {
+                tags.splice(indexRemove, 1);
+            }
+        }
+    };
 
+    return {
+        getArticles: getArticles,
+        validateArticle: validateArticle,
+        editArticle: editArticle,
+        getArticle: getArticle,
+        addArticle: addArticle,
+        removeArticle: removeArticle,
+        addTags: addTags,
+        deleteTag: deleteTag,
+        tagList: tags
+    };
+}());
+
+var articleRenderer = (function () {
+    var USER;
+    var NEW_TEMPLATE;
+    var NEWS_NODE;
+    var TAG_TEMPLATE;
+    var TAGS_NODE;
+
+    function init() {
+        NEW_TEMPLATE = document.querySelector('#template_new');
+        NEWS_NODE = document.querySelector('.news');
+        TAG_TEMPLATE = document.querySelector('#template_tag');
+        TAGS_NODE = document.querySelector('.tags_list');
+        USER = document.querySelector(".label");
+    };
+    function insertArticlesInDOM(articles) {
+        var articlesNodes = renderArticles(articles);
+        articlesNodes.forEach(function (node) {
+            NEWS_NODE.appendChild(node);
+        });
+    };
+    function removeArticlesFromDom() {
+        if (!NEWS_NODE) return false;
+        NEWS_NODE.innerHTML = '';
+    };
+    function renderArticles(articles) {
+
+        return articles.map(function (article) {
+            return renderArticle(article);
+        });
+    };
+    function renderArticle(article) {
+        var template = NEW_TEMPLATE;
+        if (!template) return;
+        template.content.querySelector('.new').dataset.id = article.id;
+        template.content.querySelector('.title').textContent = article.title;
+        template.content.querySelector('.text').textContent = article.summary;
+        template.content.querySelector('.author').textContent = article.author;
+        template.content.querySelector('.date').textContent = formatDate(article.createdAt);
+        return template.content.querySelector('.new').cloneNode(true);
+    };
+    function formatDate(d) {
+        return d.getDate() + '.' + (d.getMonth() + 1) + '.' + d.getFullYear() + '   ' +
+            d.getHours() + ':' + d.getMinutes();
+    };
+    return {
+        init: init,
+        insertArticlesInDOM: insertArticlesInDOM,
+        removeArticlesFromDom: removeArticlesFromDom
+    };
+}());
+document.addEventListener('DOMContentLoaded', startApp);
+function startApp() {
+    articleRenderer.init();
+    renderArticles();
+};
+function renderArticles(skip, top, filter) {
+    articleRenderer.removeArticlesFromDom();
+    var articles = articleModel.getArticles(skip, top, filter);
+    articleRenderer.insertArticlesInDOM(articles);
+};
+function setTags(tags) {
+    var tagList = document.querySelector('.select_tags > select');
+    var tagOption;
+    var filteredTags = tags.filter(function (tag) {
+        if (articleModel.tagList.indexOf(tag) != -1) return false;
+        return true;
+    });
+    articleModel.addTags(filteredTags);
+    filteredTags.forEach(function (tag) {
+        tagOption = document.createElement('option');
+        tagOption.innerHTML = '#' + tag;
+        tagList.appendChild(tagOption);
+    });
 }
-articles.addArticle = function (article) {
-    if (validateArticle(article, false) === true) {
-        articles.push(article);
-        return true;
+function removeTag(tag) {
+    var tagList = document.querySelector('.select_tags > select');
+    tagList.innerHTML = '';
+    var tagOption;
+    articleModel.deleteTag(tag);
+    articleModel.tagList.forEach(function (tag) {
+        tagOption = document.createElement('option');
+        tagOption.innerHTML = '#' + tag;
+        tagList.appendChild(tagOption);
+    });
+}
+function setUser(userName) {
+    var currentUserName = document.querySelector('.authorization > .label');
+    var buttonSignIn = document.querySelector('.authorization > .sign-in');
+    if (userName !== undefined) {
+        currentUserName.textContent = userName;
+        buttonSignIn.setAttribute("value", "Выйти");
+        document.querySelector('.add_new > .add_new_button').style.display = "inline-block";
+    } else {
+        currentUserName.textContent = "Гость";
+        buttonSignIn.setAttribute("value", "Войти");
+        document.querySelector('.add_new > .add_new_button').style.display = "none";
     }
-    else {
-        return false;
-    }
+}
+function editArticle(editID, newArticle) {
+    articleModel.editArticle(editID, newArticle);
+    renderArticles();
 };
-articles.removeArticle = function (id) {
-    var indexRemove = -1;
-    for (var i = 0; i < articles.length; i++) {
-        if (articles[i].id == id) {
-            indexRemove = i;
-        }
-    }
-    if (indexRemove == -1) {
-        return false;
-    }
-    articles.splice(indexRemove, 1);
-    return true;
+function addArticle(article) {
+    articleModel.addArticle(article);
+    renderArticles();
 };
-console.log(articles.getArticles(3, 7));
-console.log(articles.getArticles(0, 10, {author: 'Петр Петров'}));
-console.log(articles.getArticles(0, 10, {
-    dateFrom: new Date('2001-01-01T23:00:00'),
-    dateTo: new Date('2101-01-01T23:00:00')
-}));
-console.log(articles.getArticles(0, 20, {dateTo: new Date('2101-01-01T23:00:00')}));
-console.log(articles.getArticles(0, 20, {dateFrom: new Date('2018-01-01T23:00:00')}));
-console.log(articles.getArticles(0, 10, {
-    author: 'Петр Петров',
-    dateFrom: new Date('2001-01-01T23:00:00'),
-    dateTo: new Date('2101-01-01T23:00:00')
-}));
-
-console.log(articles.getArticle('7'));
-console.log(articles.getArticle());
-console.log(articles.getArticle('99'));
-
-console.log(articles.addArticle({
-    title: "title",
-    id: "22",
-    summary: "summary",
-    author: "author",
-    createdAt: new Date(),
-    content: "content"
-}));
-console.log(articles.addArticle({
-    title: "title",
-    id: "7",
-    summary: "summary",
-    author: "author",
-    createdAt: new Date(),
-    content: "content"
-}));
-console.log(articles.addArticle({
-    title: "title",
-    id: "10",
-    summary: "summary",
-    author: "author",
-    createdAt: new Date(),
-    content: ""
-}));
-console.log(articles.addArticle({
-    title: "title",
-    id: "13",
-    summary: "summary",
-    author: "author",
-    createdAt: new Date()
-}));
-console.log(articles.addArticle({
-    title: "title",
-    id: "17",
-    summary: "summary",
-    author: "author",
-    createdAt: new Date(),
-    content: "content"
-}));
-
-console.log(articles.editArticle("7", {title: "title"}));
-console.log(articles.editArticle("777", {title: "title"}));
-console.log(articles.editArticle("3", {title: "title",  content: "content"}));
-console.log(articles.editArticle("2", {title: "title",  content: ""}));
-
-
-console.log(articles.removeArticle("6"));
-console.log(articles.removeArticle("1883"));
-
+function removeArticle(id) {
+    articleModel.removeArticle(id);
+    renderArticles();
+};
+renderArticles();
+editArticle("0", {title: "gcghkvjlvjhvl"});
+removeArticle("5");
+addArticle({
+    id: "110",
+    title: "jhvkjvj",
+    summary: "bljkjb;kjb;kjb;kbj;",
+    createdAt: new Date('2003-11-07T23:00:00'),
+    author: "jfkh",
+    content: "hjhvjhvljhvljhvljhvlj",
+});
