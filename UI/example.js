@@ -1,22 +1,21 @@
 var articleModel = (function () {
-    var GLOBAL_ARTICLES = [
-        {
-            id: '1',
-            title: 'Минское «Динамо» обыграло ярославский «Локомотив»',
-            summary: 'T44-ая ракетка мира согласилась провести время с фанатом, если клуб «Нью-Инглэнд Пэтриотс» станет победителем Супербоула.',
-            createdAt: new Date('2017-03-20T23:00:00'),
-            author: 'Петр Петров',
-            content: 'Гости создали больше опасных моментов и в два раза перебросали минчан, но «зубры» на этот раз очень эффективно использовали свои моменты.',
-            tags: ["здоровье", "политика"],
-            picture: "picture.jpg"
-        },
+    var articlesStorage = [{
+        id: '1',
+        title: 'Минское «Динамо» обыграло ярославский «Локомотив»',
+        summary: 'T44-ая ракетка мира согласилась провести время с фанатом, если клуб «Нью-Инглэнд Пэтриотс» станет победителем Супербоула.',
+        createdAt: new Date('2017-03-20T23:00:00'),
+        author: 'Петр Петров',
+        contentArticle: 'Гости создали больше опасных моментов и в два раза перебросали минчан, но «зубры» на этот раз очень эффективно использовали свои моменты.',
+        tags: ["здоровье", "политика"],
+        picture: "picture.jpg"
+    },
         {
             id: '2',
             title: 'Минское «Динамо» обыграло ярославский «Локомотив»',
             summary: 'Минское «Динамо» обыграло ярославский «Локомотив» в четвертом матче первого раунда плей-офф КХЛ — 4:2',
             createdAt: new Date('2016-01-31T23:00:00'),
             author: 'Иван Иванов',
-            content: 'Гости создали больше опасных моментов и в два раза перебросали минчан, но «зубры» на этот раз очень эффективно использовали свои моменты.',
+            contentArticle: 'Гости создали больше опасных моментов и в два раза перебросали минчан, но «зубры» на этот раз очень эффективно использовали свои моменты.',
             tags: ["наука"],
             picture: "picture.jpg"
         },
@@ -28,8 +27,8 @@ var articleModel = (function () {
             'Минское «Динамо» обыграло ярославский «Локомотив» в четвертом матче первого раунда плей-офф КХЛ — 4:2' +
             'Минское «Динамо» обыграло ярославский «Локомотив» в четвертом матче первого раунда плей-офф КХЛ — 4:2',
             createdAt: new Date('2018-10-23T23:00:00'),
-            author: 'Борисенко Борис',
-            content: 'Гости создали больше опасных моментов и в два раза перебросали минчан, но «зубры» на этот раз очень эффективно использовали свои моменты.',
+            author: 'Иван Иванов',
+            contentArticle: 'Гости создали больше опасных моментов и в два раза перебросали минчан, но «зубры» на этот раз очень эффективно использовали свои моменты.',
             tags: ["мода", "здоровье"],
             picture: "picture.jpg"
         },
@@ -38,8 +37,8 @@ var articleModel = (function () {
             title: 'Минское «Динамо» обыграло ярославский «Локомотив»',
             summary: 'Минское «Динамо» обыграло ярославский «Локомотив» в четвертом матче первого раунда плей-офф КХЛ — 4:2',
             createdAt: new Date('2014-02-27T23:00:00'),
-            author: 'Николаев Николай',
-            content: 'Гости создали больше опасных моментов и в два раза перебросали минчан, но «зубры» на этот раз очень эффективно использовали свои моменты.',
+            author: 'Иван Иванов',
+            contentArticle: 'Гости создали больше опасных моментов и в два раза перебросали минчан, но «зубры» на этот раз очень эффективно использовали свои моменты.',
             tags: ["спорт"],
             picture: "picture.jpg"
         },
@@ -48,8 +47,8 @@ var articleModel = (function () {
             title: 'Минское «Динамо» обыграло ярославский «Локомотив»',
             summary: 'Минское «Динамо» обыграло ярославский «Локомотив» в четвертом матче первого раунда плей-офф КХЛ — 4:2',
             createdAt: new Date('2011-06-07T23:00:00'),
-            author: 'Иванов Ваня',
-            content: 'Гости создали больше опасных моментов и в два раза перебросали минчан, но «зубры» на этот раз очень эффективно использовали свои моменты.',
+            author: 'Иван Иванов',
+            contentArticle: 'Гости создали больше опасных моментов и в два раза перебросали минчан, но «зубры» на этот раз очень эффективно использовали свои моменты.',
             tags: ["политика"],
             picture: "picture.jpg"
         },
@@ -58,8 +57,8 @@ var articleModel = (function () {
             title: 'Минское «Динамо» обыграло ярославский «Локомотив»',
             summary: 'Минское «Динамо» обыграло ярославский «Локомотив» в четвертом матче первого раунда плей-офф КХЛ — 4:2',
             createdAt: new Date('2010-09-01T23:00:00'),
-            author: 'Сергей Степанов',
-            content: 'Гости создали больше опасных моментов и в два раза перебросали минчан, но «зубры» на этот раз очень эффективно использовали свои моменты.',
+            author: 'Иван Иванов',
+            contentArticle: 'Гости создали больше опасных моментов и в два раза перебросали минчан, но «зубры» на этот раз очень эффективно использовали свои моменты.',
             tags: ["здоровье", "мода"],
             picture: "picture.jpg"
         },
@@ -69,7 +68,7 @@ var articleModel = (function () {
             summary: 'Минское «Динамо» обыграло ярославский «Локомотив» в четвертом матче первого раунда плей-офф КХЛ — 4:2',
             createdAt: new Date('2022-03-25T23:00:00'),
             author: 'Солдатенко Владислав',
-            content: 'Гости создали больше опасных моментов и в два раза перебросали минчан, но «зубры» на этот раз очень эффективно использовали свои моменты.',
+            contentArticle: 'Гости создали больше опасных моментов и в два раза перебросали минчан, но «зубры» на этот раз очень эффективно использовали свои моменты.',
             tags: ["политика", "наука"],
             picture: "picture.jpg"
         },
@@ -79,7 +78,7 @@ var articleModel = (function () {
             summary: 'Минское «Динамо» обыграло ярославский «Локомотив» в четвертом матче первого раунда плей-офф КХЛ — 4:2',
             createdAt: new Date('1999-07-28T23:00:00'),
             author: 'Дмитриенко Дмитрий',
-            content: 'Гости создали больше опасных моментов и в два раза перебросали минчан, но «зубры» на этот раз очень эффективно использовали свои моменты.',
+            contentArticle: 'Гости создали больше опасных моментов и в два раза перебросали минчан, но «зубры» на этот раз очень эффективно использовали свои моменты.',
             tags: ["спорт", "здоровье"],
             picture: "picture.jpg"
         },
@@ -89,7 +88,7 @@ var articleModel = (function () {
             summary: 'Минское «Динамо» обыграло ярославский «Локомотив» в четвертом матче первого раунда плей-офф КХЛ — 4:2',
             createdAt: new Date('2003-11-07T23:00:00'),
             author: 'Степанов Степан',
-            content: 'Гости создали больше опасных моментов и в два раза перебросали минчан, но «зубры» на этот раз очень эффективно использовали свои моменты.',
+            contentArticle: 'Гости создали больше опасных моментов и в два раза перебросали минчан, но «зубры» на этот раз очень эффективно использовали свои моменты.',
             tags: ["политика", "спорт"],
             picture: "picture.jpg"
         },
@@ -99,7 +98,7 @@ var articleModel = (function () {
             summary: 'Минское «Динамо» обыграло ярославский «Локомотив» в четвертом матче первого раунда плей-офф КХЛ — 4:2',
             createdAt: new Date('2003-08-30T23:00:00'),
             author: 'Лебедев Дмитрий',
-            content: 'Гости создали больше опасных моментов и в два раза перебросали минчан, но «зубры» на этот раз очень эффективно использовали свои моменты.',
+            contentArticle: 'Гости создали больше опасных моментов и в два раза перебросали минчан, но «зубры» на этот раз очень эффективно использовали свои моменты.',
             tags: ["политика", "спорт"],
             picture: "picture.jpg"
         },
@@ -109,7 +108,7 @@ var articleModel = (function () {
             summary: 'Минское «Динамо» обыграло ярославский «Локомотив» в четвертом матче первого раунда плей-офф КХЛ — 4:2',
             createdAt: new Date('2017-04-01T23:00:00'),
             author: 'Бриткин Павел',
-            content: 'Гости создали больше опасных моментов и в два раза перебросали минчан, но «зубры» на этот раз очень эффективно использовали свои моменты.',
+            contentArticle: 'Гости создали больше опасных моментов и в два раза перебросали минчан, но «зубры» на этот раз очень эффективно использовали свои моменты.',
             tags: ["здоровье", "политика"],
             picture: "picture.jpg"
         },
@@ -119,7 +118,7 @@ var articleModel = (function () {
             summary: 'Минское «Динамо» обыграло ярославский «Локомотив» в четвертом матче первого раунда плей-офф КХЛ — 4:2',
             createdAt: new Date('2016-03-08T23:00:00'),
             author: 'Сидоров Пётр',
-            content: 'Гости создали больше опасных моментов и в два раза перебросали минчан, но «зубры» на этот раз очень эффективно использовали свои моменты.',
+            contentArticle: 'Гости создали больше опасных моментов и в два раза перебросали минчан, но «зубры» на этот раз очень эффективно использовали свои моменты.',
             tags: ["наука"],
             picture: "picture.jpg"
         },
@@ -129,7 +128,7 @@ var articleModel = (function () {
             summary: 'Минское «Динамо» обыграло ярославский «Локомотив» в четвертом матче первого раунда плей-офф КХЛ — 4:2',
             createdAt: new Date('2018-02-23T23:00:00'),
             author: 'Евсеенко Наталья',
-            content: 'Гости создали больше опасных моментов и в два раза перебросали минчан, но «зубры» на этот раз очень эффективно использовали свои моменты.',
+            contentArticle: 'Гости создали больше опасных моментов и в два раза перебросали минчан, но «зубры» на этот раз очень эффективно использовали свои моменты.',
             tags: ["мода", "здоровье"],
             picture: "picture.jpg"
         },
@@ -139,7 +138,7 @@ var articleModel = (function () {
             summary: 'Минское «Динамо» обыграло ярославский «Локомотив» в четвертом матче первого раунда плей-офф КХЛ — 4:2',
             createdAt: new Date('2014-05-01T23:00:00'),
             author: 'Котов Николай',
-            content: 'Гости создали больше опасных моментов и в два раза перебросали минчан, но «зубры» на этот раз очень эффективно использовали свои моменты.',
+            contentArticle: 'Гости создали больше опасных моментов и в два раза перебросали минчан, но «зубры» на этот раз очень эффективно использовали свои моменты.',
             tags: ["спорт"],
             picture: "picture.jpg"
         },
@@ -149,7 +148,7 @@ var articleModel = (function () {
             summary: 'Минское «Динамо» обыграло ярославский «Локомотив» в четвертом матче первого раунда плей-офф КХЛ — 4:2',
             createdAt: new Date('2011-06-07T23:00:00'),
             author: 'Волков Даниил',
-            content: 'Гости создали больше опасных моментов и в два раза перебросали минчан, но «зубры» на этот раз очень эффективно использовали свои моменты.',
+            contentArticle: 'Гости создали больше опасных моментов и в два раза перебросали минчан, но «зубры» на этот раз очень эффективно использовали свои моменты.',
             tags: ["политика"],
             picture: "picture.jpg"
         },
@@ -159,7 +158,7 @@ var articleModel = (function () {
             summary: 'Минское «Динамо» обыграло ярославский «Локомотив» в четвертом матче первого раунда плей-офф КХЛ — 4:2',
             createdAt: new Date('2010-04-21T23:00:00'),
             author: 'Кот Александра',
-            content: 'Гости создали больше опасных моментов и в два раза перебросали минчан, но «зубры» на этот раз очень эффективно использовали свои моменты.',
+            contentArticle: 'Гости создали больше опасных моментов и в два раза перебросали минчан, но «зубры» на этот раз очень эффективно использовали свои моменты.',
             tags: ["здоровье", "мода"],
             picture: "picture.jpg"
         },
@@ -169,7 +168,7 @@ var articleModel = (function () {
             summary: 'Минское «Динамо» обыграло ярославский «Локомотив» в четвертом матче первого раунда плей-офф КХЛ — 4:2',
             createdAt: new Date('2022-02-13T23:00:00'),
             author: 'Мамченко Евстафий',
-            content: 'Гости создали больше опасных моментов и в два раза перебросали минчан, но «зубры» на этот раз очень эффективно использовали свои моменты.',
+            contentArticle: 'Гости создали больше опасных моментов и в два раза перебросали минчан, но «зубры» на этот раз очень эффективно использовали свои моменты.',
             tags: ["политика", "наука"],
             picture: "picture.jpg"
         },
@@ -179,7 +178,7 @@ var articleModel = (function () {
             summary: 'Минское «Динамо» обыграло ярославский «Локомотив» в четвертом матче первого раунда плей-офф КХЛ — 4:2',
             createdAt: new Date('1999-01-01T23:00:00'),
             author: 'Владимир Ленин',
-            content: 'Гости создали больше опасных моментов и в два раза перебросали минчан, но «зубры» на этот раз очень эффективно использовали свои моменты.',
+            contentArticle: 'Гости создали больше опасных моментов и в два раза перебросали минчан, но «зубры» на этот раз очень эффективно использовали свои моменты.',
             tags: ["спорт", "здоровье"],
             picture: "picture.jpg"
         },
@@ -189,7 +188,7 @@ var articleModel = (function () {
             summary: 'Минское «Динамо» обыграло ярославский «Локомотив» в четвертом матче первого раунда плей-офф КХЛ — 4:2',
             createdAt: new Date('2003-10-20T23:00:00'),
             author: 'Иосиф Сталин',
-            content: 'Гости создали больше опасных моментов и в два раза перебросали минчан, но «зубры» на этот раз очень эффективно использовали свои моменты.',
+            contentArticle: 'Гости создали больше опасных моментов и в два раза перебросали минчан, но «зубры» на этот раз очень эффективно использовали свои моменты.',
             tags: ["политика", "спорт"],
             picture: "picture.jpg"
         },
@@ -199,52 +198,63 @@ var articleModel = (function () {
             summary: 'Минское «Динамо» обыграло ярославский «Локомотив» в четвертом матче первого раунда плей-офф КХЛ — 4:2',
             createdAt: new Date('2117-12-31T23:00:00'),
             author: 'Иван Иванов',
-            content: 'Гости создали больше опасных моментов и в два раза перебросали минчан, но «зубры» на этот раз очень эффективно использовали свои моменты.',
+            contentArticle: 'Гости создали больше опасных моментов и в два раза перебросали минчан, но «зубры» на этот раз очень эффективно использовали свои моменты.',
             tags: ["мода", "наука"],
             picture: "picture.jpg"
         }];
     var tags = [];
 
     function getArticles(skip, top, filterConfig) {
-        var skip = skip || 0;
-        var top = top || 10;
-        var currentArticles = GLOBAL_ARTICLES;
-        if (filterConfig !== undefined) {
-            if (filterConfig.author !== undefined) {
-                currentArticles = currentArticles.filter(function (item) {
-                    return item.author === filterConfig.author;
+        skip = skip || 0;
+        top = top || 5;
+        return filterArticles(articlesStorage, filterConfig).slice(skip, skip + top);
+    }
+
+    function getArticlesCount(filterConfig) {
+        return filterArticles(articlesStorage, filterConfig).length;
+    }
+
+    function filterArticles(articles, filterConfig) {
+        if (filterConfig) {
+            if (filterConfig.author) {
+                articles = articles.filter(function (article) {
+                    return filterConfig.author === article.author;
                 })
             }
-            if (filterConfig.dateFrom !== undefined) {
-                currentArticles = currentArticles.filter(function (item) {
-                    return item.createdAt >= filterConfig.dateFrom;
+            if (filterConfig.dateFrom) {
+                articles = articles.filter(function (item) {
+                    var _date = new Date(filterConfig.dateFrom)
+                    return item.createdAt >= _date;
                 })
             }
-            if (filterConfig.dateTo !== undefined) {
-                currentArticles = currentArticles.filter(function (element) {
-                    return element.createdAt <= filterConfig.dateTo;
+            if (filterConfig.dateTo) {
+                articles = articles.filter(function (element) {
+                    var _date = new Date(filterConfig.dateTo)
+                    return element.createdAt <= _date;
                 })
             }
-            if (filterConfig.tags !== undefined && filterConfig.tags.length > 0) {
-                currentArticles = currentArticles.filter(function (item) {
-                    for (var i = 0; i < filterConfig.tags.length; i++) {
-                        if (item.tags === filterConfig.tags[i]) {
-                            return item;
-                        }
+            if (filterConfig.tags) {
+                articles = articles.filter(function (item) {
+                    //for (var i = 0; i < filterConfig.tags.length; i++) {
+                    var _tags = item.tags;
+                    if (_tags.indexOf(filterConfig.tags) > -1) {
+                        return item;
                     }
+                    //}
                 })
             }
         }
-        currentArticles = currentArticles.sort(function (firstItem, secondItem) {
+        return articles.sort(function (firstItem, secondItem) {
             return secondItem.createdAt - firstItem.createdAt;
         });
-        return currentArticles.slice(skip, skip + top);
-    };
+
+    }
+
     function getArticle(id) {
         var article;
-        for (var i = 0; i < GLOBAL_ARTICLES.length; i++) {
-            if (GLOBAL_ARTICLES[i].id == id) {
-                article = GLOBAL_ARTICLES[i];
+        for (var i = 0; i < articlesStorage.length; i++) {
+            if (articlesStorage[i].id == id) {
+                article = articlesStorage[i];
                 return article;
             }
         }
@@ -266,34 +276,36 @@ var articleModel = (function () {
         if (typeof article.author !== 'string' || article.author.length <= 0) {
             return false;
         }
-        if (typeof article.content !== 'string' || article.content.length <= 0) {
+        if (typeof article.contentArticle !== 'string' || article.contentArticle.length <= 0) {
             return false;
         }
-         if (article.tags === undefined || article.tags.length > 5) {
-         return false;
-         }
-         for (var i = 0; i < article.tags.length; i++) {
-         if (typeof(article.tags[i]) !== "string") {
-         return false;
-         }
-         }
+        if (article.tags === undefined || article.tags.length > 5) {
+            return false;
+        }
+        for (var i = 0; i < article.tags.length; i++) {
+            if (typeof(article.tags[i]) !== "string") {
+                return false;
+            }
+        }
         return true;
-    };
+    }
+
     function editArticle(id, article) {
         var currentArticleId = getArticle(id);
-        var newArticle={} ;
-        Object.assign(newArticle,currentArticleId);
+        var newArticle = {};
+        Object.assign(newArticle, currentArticleId);
         for (var key in article) {
             if ((key !== "id") && (key !== " createdAt") && ((key !== "author")))
                 newArticle[key] = article[key];
         }
         if (validateArticle(newArticle, true)) {
-            currentArticleId =  newArticle;
+            Object.assign(getArticle(id), newArticle);
         }
-    };
+    }
+
     function addArticle(article) {
         if (validateArticle(article, false)) {
-            GLOBAL_ARTICLES.push(article);
+            articlesStorage.push(article);
             return true;
         }
         else {
@@ -302,29 +314,32 @@ var articleModel = (function () {
     };
     function removeArticle(id) {
         var indexRemove = -1;
-        for (var i = 0; i < GLOBAL_ARTICLES.length; i++) {
-            if (GLOBAL_ARTICLES[i].id == id) {
+        for (var i = 0; i < articlesStorage.length; i++) {
+            if (articlesStorage[i].id == id) {
                 indexRemove = i;
             }
         }
         if (indexRemove == -1) {
             return false;
         }
-        GLOBAL_ARTICLES.splice(indexRemove, 1);
+        articlesStorage.splice(indexRemove, 1);
         return true;
-    };
+    }
+
     function containsTag(tag) {
         for (var i = 0; i < tags.length; i++) {
             if (tags[i] === tag)
                 return i;
         }
         return -1;
-    };
+    }
+
     function addTags(tagsForAdd) {
         tagsForAdd.forEach(function (tag) {
             if (tags.indexOf(tag) === -1) tags.push(tag);
         })
-    };
+    }
+
     function deleteTag(tagForDelete) {
         if (tagForDelete !== undefined) {
             var indexRemove = tags.indexOf(tagForDelete)
@@ -333,146 +348,454 @@ var articleModel = (function () {
             }
         }
     };
-
     return {
         getArticles: getArticles,
+        getArticlesCount: getArticlesCount,
+        getArticle: getArticle,
         validateArticle: validateArticle,
         editArticle: editArticle,
-        getArticle: getArticle,
         addArticle: addArticle,
         removeArticle: removeArticle,
         addTags: addTags,
         deleteTag: deleteTag,
-        tagList: tags,
-        articlesList: GLOBAL_ARTICLES
     };
-}());
-
+}())
 var articleRenderer = (function () {
-    var NEW_TEMPLATE;
-    var NEWS_NODE;
+    var articleTemplate;
+    var articleListNode;
 
     function init() {
-        NEW_TEMPLATE = document.querySelector('#template_new');
-        NEWS_NODE = document.querySelector('.news');
-    };
+        articleTemplate = document.querySelector('#template_article');
+        articleListNode = document.querySelector('.articles_list');
+        document.getElementById("edit_form").style.display = 'none';
+    }
+
     function insertArticlesInDOM(articles) {
         var articlesNodes = renderArticles(articles);
         articlesNodes.forEach(function (node) {
-            NEWS_NODE.appendChild(node);
+            articleListNode.appendChild(node);
         });
-    };
+    }
+
     function removeArticlesFromDom() {
-        NEWS_NODE.innerHTML = '';
-    };
+        articleListNode.innerHTML = '';
+    }
+
     function renderArticles(articles) {
+        /* каждый объект article из массива преобразуем в HTML элемент */
 
         return articles.map(function (article) {
             return renderArticle(article);
         });
-    };
+    }
+
     function renderArticle(article) {
-        var template = NEW_TEMPLATE;
-        if (!template) return;
-        template.content.querySelector('.new').dataset.id = article.id;
+        var template = articleTemplate;
+        template.content.querySelector('.article').dataset.id = article.id;
         template.content.querySelector('.title').textContent = article.title;
-        template.content.querySelector('.text > .text_value').textContent = article.summary;
+        template.content.querySelector('.summary').textContent = article.summary;
         template.content.querySelector('.author').textContent = article.author;
         template.content.querySelector('.date').textContent = formatDate(article.createdAt);
-        template.content.querySelector('.text > .picture').setAttribute("src","picture.jpg");
-        template.content.querySelector('.text > .picture').setAttribute("value","Показать полностью...");
-        template.content.querySelector('.text > ul').innerHTML="";
-        if(article.tags!==undefined) {
+        template.content.querySelector('.picture').setAttribute("src", "picture.jpg");
+        template.content.querySelector('.tags').innerHTML = "";
+        if (article.tags !== undefined) {
             var tagLi;
             for (var i = 0; i < article.tags.length; i++) {
                 tagLi = document.createElement('li');
                 tagLi.innerHTML = '#' + article.tags[i] + " ";
-                template.content.querySelector('.text > ul ').appendChild(tagLi);
+                template.content.querySelector('.tags').appendChild(tagLi);
             }
         }
+        return template.content.querySelector('.article').cloneNode(true);
+    }
 
-        return template.content.querySelector('.new').cloneNode(true);
-    };
     function formatDate(d) {
-        return d.getDate() + '.' + (d.getMonth() + 1) + '.' + d.getFullYear() + '   ' +
+        return d.getDate() + ' . ' + (d.getMonth() + 1) + ' . ' + d.getFullYear() + '   ' +
             d.getHours() + ':' + d.getMinutes();
-    };
+    }
+
     return {
         init: init,
         insertArticlesInDOM: insertArticlesInDOM,
         removeArticlesFromDom: removeArticlesFromDom
     };
 }());
+var userRenderer = (function () {
+    var label;
+    var authorization;
+    var add;
+
+    function init() {
+        authorization = document.forms.authorization_form;
+        label = document.getElementById('user_name_label')
+        add = document.getElementById('add');
+    }
+
+    function renderHeader(user_name) {
+        var template = authorization;
+        var labelTemp = label;
+        var addTemp = add;
+        if (user_name.user) {
+            labelTemp.textContent = user_name.user;
+            template.elements.in_out.setAttribute('value', "Выйти");
+            template.elements.user_name.style.display = "none";
+            template.elements.user_name.value = "";
+            template.elements.user_password.value = "";
+            template.elements.user_password.style.display = "none";
+            add.style.display = "inline-block";
+            document.getElementById('edit_id').style.display = 'inline-block';
+            document.getElementById('remove_id').style.display = 'inline-block';
+            document.getElementById('edit_id').addEventListener('click', handleAddEditClick);
+        } else {
+            template.elements.in_out.setAttribute('value', "Войти");
+            template.elements.user_name.style.display = "inline-block";
+            template.elements.user_password.style.display = "inline-block";
+            document.getElementById('edit_id').style.display = 'none';
+            document.getElementById('remove_id').style.display = 'none';
+            addTemp.style.display = "none";
+            labelTemp.innerHTML = "";
+            document.getElementById('edit_id').addEventListener('click', handleAddEditClick);
+        }
+    }
+
+    return {
+        init: init,
+        renderHeader: renderHeader
+    };
+}());
+var pagination = (function () {
+    var ITEMS_PER_PAGE = 5;
+    var total;
+    var currentPage;
+    var showMoreButton;
+    var showMoreCallback;
+
+    function init(_total, _showMoreCallback) {
+        currentPage = 1;
+        total = _total;
+        showMoreCallback = _showMoreCallback;
+        showMoreButton = document.getElementById('view_more_button');
+        showMoreButton.addEventListener('click', handleShowMoreClick);
+        showOrHideMoreButton();
+        return getParams();
+    }
+
+    function handleShowMoreClick() {
+        var paginationParams = nextPage();
+        showMoreCallback(paginationParams.skip, paginationParams.top);
+    }
+
+    function getTotalPages() {
+        return Math.ceil(total / ITEMS_PER_PAGE);
+    }
+
+    function nextPage() {
+        currentPage = currentPage + 1;
+        showOrHideMoreButton();
+        return getParams();
+    }
+
+    function getParams() {
+        return {
+            top: ITEMS_PER_PAGE,
+            skip: (currentPage - 1) * ITEMS_PER_PAGE
+        };
+    }
+
+    function showOrHideMoreButton() {
+        showMoreButton.hidden = getTotalPages() <= currentPage;
+    }
+
+    return {
+        init: init
+    }
+}());
+var filter = (function () {
+    var form;
+    var submitButton;
+    var filterChangedCallback;
+
+    function init(_filterChangedCallback) {
+        form = document.forms.filter;
+        submitButton = form.elements.submit;
+        submitButton.addEventListener('click', handleSubmitClick);
+        filterChangedCallback = _filterChangedCallback;
+        return getFilter();
+    }
+
+    function getFilter() {
+        var authorSelect = form.elements.author;
+        var dateFromSelect = form.elements.date_from;
+        var dateToSelect = form.elements.date_to;
+        var tagsSelect = form.elements.tags;
+        var _author;
+        var _dateFrom;
+        var _dateTo;
+        var _tags;
+        if (authorSelect.value) {
+            _author = authorSelect.value;
+        }
+        if (dateFromSelect.value) {
+            _dateFrom = dateFromSelect.value;
+        }
+        if (dateToSelect.value) {
+            _dateTo = dateToSelect.value;
+        }
+        if (tagsSelect.value) {
+            _tags = tagsSelect.value;
+        }
+        return {
+            author: _author,
+            dateFrom: _dateFrom,
+            dateTo: _dateTo,
+            tags: _tags
+        }
+    }
+
+    function handleSubmitClick() {
+        return filterChangedCallback(getFilter());
+    }
+
+    return {
+        init: init,
+        getFilterConfig: getFilter
+    };
+
+}());
+var authorization = (function () {
+    var form;
+    var logInButton;
+    var userChangedCallback;
+
+    function init(_userChangedCallback) {
+        form = document.forms.authorization_form;
+        logInButton = form.elements.in_out;
+        logInButton.addEventListener('click', handleInOutClick);
+        userChangedCallback = _userChangedCallback;
+        return getUser();
+    }
+
+    function getUser() {
+        var user = form.elements.user_name;
+        var sign_in = form.elements.in_out;
+        var _user;
+        if (user.value && sign_in.value === "Войти") {
+            _user = user.value;
+        }
+        return {
+            user: _user,
+        }
+    }
+
+    function handleInOutClick() {
+        return userChangedCallback(getUser());
+    }
+
+    return {
+        init: init,
+        getUser: getUser
+    };
+
+}());
+var articleFullRenderer = (function () {
+    var articleTemplate;
+    var articleListNode;
+
+    function init() {
+        articleTemplate = document.querySelector('#template_full_article');
+        articleListNode = document.querySelector('.articles_list');
+        document.getElementById('filter_id').style.display = "none";
+        document.getElementById('pagination_id').style.display = 'none';
+        document.getElementById("edit_form").style.display = 'none';
+    }
+
+    function insertArticlesInDOM(id) {
+        var articlesNode = renderArticle(articleModel.getArticle(id));
+        console.log(articlesNode);
+        articleListNode.appendChild(articlesNode);
+    }
+
+    function removeArticlesFromDom() {
+        articleListNode.innerHTML = '';
+    }
+
+    function renderArticle(article) {
+        var template = articleTemplate;
+        if (document.getElementById('sign_in_id').getAttribute('value') === "Войти") {
+            template.content.querySelector('.edit').style.display = 'none';
+            template.content.querySelector('.remove').style.display = 'none';
+        } else {
+            template.content.querySelector('.edit').style.display = 'inline-block';
+            template.content.querySelector('.remove').style.display = 'inline-block';
+        }
+        template.content.querySelector('.article_full').dataset.id = article.id;
+        template.content.querySelector('.title').textContent = article.title;
+        template.content.querySelector('.full_text').textContent = article.contentArticle;
+        template.content.querySelector('.author').textContent = article.author;
+        template.content.querySelector('.date').textContent = formatDate(article.createdAt);
+        template.content.querySelector('.picture').setAttribute("src", "picture.jpg");
+        template.content.querySelector('.tags').innerHTML = "";
+        if (article.tags !== undefined) {
+            var tagLi;
+            for (var i = 0; i < article.tags.length; i++) {
+                tagLi = document.createElement('li');
+                tagLi.innerHTML = '#' + article.tags[i] + " ";
+                template.content.querySelector('.tags').appendChild(tagLi);
+            }
+        }
+        return template.content.querySelector('.article_full').cloneNode(true);
+    }
+
+    function formatDate(d) {
+        return d.getDate() + ' . ' + (d.getMonth() + 1) + ' . ' + d.getFullYear() + '   ' +
+            d.getHours() + ':' + d.getMinutes();
+    }
+
+    return {
+        init: init,
+        insertArticlesInDOM: insertArticlesInDOM,
+        removeArticlesFromDom: removeArticlesFromDom
+    };
+}());
+var articleInformation = (function () {
+    var form;
+    var addArticleButton;
+    var addArticleCallback;
+    function init(_addArticleCallback) {
+        form = document.forms.edit_form;
+        addArticleButton = form.elements.add_article_name;
+        addArticleButton.addEventListener('click', handleInOutClick);
+        addArticleCallback = _addArticleCallback;
+        return getData();
+    }
+    function getData() {
+        var title = form.elements.title_name;
+        var summary = form.elements.summary_name;
+        var content = form.elements.content_name;
+        var tags = form.elements.tags_name;
+        var _title;
+        var _summary;
+        var _content;
+        var _tags;
+        if (title.value) {
+            _title = title.value;
+        }
+        if (summary.value) {
+            _summary = summary.value;
+        }
+        if (content.value) {
+            _content = content.value;
+        }
+        if (tags.value) {
+            _tags = tags.value;
+        }
+        return {
+            title: _title,
+            summary: _summary,
+            content: _content,
+            tags: _tags
+        }
+
+
+    }
+    function handleInOutClick(event) {
+        var editArticle = getData();
+        articleModel.editArticle(0, editArticle);
+        startApp();
+    }
+    return {
+        init: init,
+        getData: getData
+    };
+}());
+var addEditArticle = (function () {
+    var editForm;
+    var articleListNode;
+    var articleId = 0;
+
+    function init() {
+        articleListNode = document.querySelector('.articles_list');
+        document.getElementById('filter_id').style.display = "none";
+        document.getElementById('pagination_id').style.display = 'none';
+        document.getElementById("edit_form").style.display = 'inline-block';
+        var editElement = document.getElementById('edit_form');
+        editForm = editElement.querySelector('form');
+    }
+
+    function insertArticlesInDOM(article) {
+        var articlesNode = renderArticle(article);
+        articleId = article.id;
+        articleInformation.init();
+    }
+
+    function removeArticlesFromDom() {
+        articleListNode.innerHTML = '';
+    }
+
+    function renderArticle(article) {
+        var elem = editForm.querySelector('div.fixed_information');
+        console.log(elem);
+       elem.getElementById('author_edit').innerHTML = article.author;
+        elem.getElementById('id_edit').innerHTML = article.id;
+        elem.getElementById('date_edit').innerHTML = article.createdAt;
+
+    }
+
+    function formatDate(d) {
+        return d.getDate() + ' . ' + (d.getMonth() + 1) + ' . ' + d.getFullYear() + '   ' +
+            d.getHours() + ':' + d.getMinutes();
+    }
+
+    return {
+        init: init,
+        insertArticlesInDOM: insertArticlesInDOM,
+        removeArticlesFromDom: removeArticlesFromDom,
+        articleId : articleId
+    };
+}());
 document.addEventListener('DOMContentLoaded', startApp);
 function startApp() {
     articleRenderer.init();
-    renderArticles();
-};
-function renderArticles(skip, top, filter) {
-    articleRenderer.removeArticlesFromDom();
-    var articles = articleModel.getArticles(skip, top, filter);
-    articleRenderer.insertArticlesInDOM(articles);
-};
-function setTags(tags) {
-    var tagList = document.querySelector('.select_tags > select');
-    var tagOption;
-    var filteredTags = tags.filter(function (tag) {
-        if (articleModel.tagList.indexOf(tag) != -1) return false;
-        return true;
-    });
-    articleModel.addTags(filteredTags);
-    filteredTags.forEach(function (tag) {
-        tagOption = document.createElement('option');
-        tagOption.innerHTML = '#' + tag;
-        tagList.appendChild(tagOption);
-    });
-}
-function removeTag(tag) {
-    var tagList = document.querySelector('.select_tags > select');
-    tagList.innerHTML = '';
-    var tagOption;
-    articleModel.deleteTag(tag);
-    tagOption = document.createElement('option');
-    tagOption.innerHTML = 'Тэги';
-    tagList.appendChild(tagOption);
-    articleModel.tagList.forEach(function (tag) {
-        tagOption = document.createElement('option');
-        tagOption.innerHTML = '#' + tag;
-        tagList.appendChild(tagOption);
-    });
-}
-function setUser(userName) {
-    var currentUserName = document.querySelector('.authorization > .label');
-    var buttonSignIn = document.querySelector('.authorization > .sign-in');
-    if (userName !== undefined) {
-        currentUserName.textContent = userName;
-        buttonSignIn.setAttribute("value", "Выйти");
-        document.querySelector('.add_new > .add_new_button').style.display = "inline-block";
-    } else {
-        currentUserName.textContent = "Гость";
-        buttonSignIn.setAttribute("value", "Войти");
-        document.querySelector('.add_new > .add_new_button').style.display = "none";
+    var filterConfig = filter.init(renderArticlesWithFilterConfig);
+    renderArticlesWithFilterConfig(filterConfig);
+    userRenderer.init();
+    authorization.init(renderHeaderWithAuthorization);
+    function renderHeaderWithAuthorization() {
+        var currentUser = authorization.getUser();
+        userRenderer.renderHeader(currentUser);
+    }
+
+    function renderArticlesWithFilterConfig(filterConfig) {
+        articleRenderer.removeArticlesFromDom();
+        var total = articleModel.getArticlesCount(filterConfig);
+        var paginationParams = pagination.init(total, function (skip, top) {
+            renderArticles(skip, top, filterConfig);
+        });
+        renderArticles(paginationParams.skip, paginationParams.top, filterConfig);
+    }
+
+    function renderArticles(skip, top, filterConfig) {
+        var articles = articleModel.getArticles(skip, top, filterConfig);
+        articleRenderer.insertArticlesInDOM(articles);
+        var allArticles = document.getElementsByClassName('view_all');
+        [].forEach.call(allArticles, function (item) {
+            item.addEventListener('click', handleViewAllClick)
+        })
     }
 }
-function editArticle(editID, newArticle) {
-    articleModel.editArticle(editID, newArticle);
-    renderArticles();
-};
-function addArticle(article) {
-    articleModel.addArticle(article);
-    renderArticles();
-};
-function removeArticle(id) {
-    articleModel.removeArticle(id);
-    renderArticles();
-};
-editArticle("7", {title: "gcghkvjlvjhvl"});
-removeArticle("5");
-addArticle({
-    id: "110",
-    title: "jhvkjvj",
-    summary: "bljkjb;kjb;kjb;kbj;",
-    createdAt: new Date('2003-11-07T23:00:00'),
-    author: "jfkh",
-    content: "hjhvjhvljhvljhvljhvlj",
-});
+function handleAddEditClick(event) {
+    articleRenderer.removeArticlesFromDom();
+    addEditArticle.init();
+    addEditArticle.insertArticlesInDOM(articleModel.getArticle(event.target.parentNode.dataset.id));
+
+}
+function handleViewAllClick(event) {
+    articleRenderer.removeArticlesFromDom();
+    articleFullRenderer.init();
+    articleFullRenderer.insertArticlesInDOM(event.target.parentNode.dataset.id)
+}
+
+function deleteClicked(event) {
+    articleModel.removeArticle(event.target.parentNode.dataset.id);
+    startApp();
+}
