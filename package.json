@@ -1,0 +1,22 @@
+{
+  "name": "news-portal",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AnyaZayceva/UP.git"
+  },
+  "author": "Anya",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/AnyaZayceva/UP/issues"
+  },
+  "homepage": "https://github.com/AnyaZayceva/UP#readme",
+  "dependencies": {
+    "express": "^4.15.2"
+  }
+}
