@@ -166,7 +166,7 @@ const articleModel = (function () {
 
   function replaceArticles() {
     return new Promise((resolve) => {
-      requestModel.getArticles().then(
+      requests.getArticles().then(
                 (response) => {
                   articlesStorage = response;
                   console.log(articlesStorage);
@@ -464,7 +464,7 @@ function handleMainClick() {
   startApp();
 }
 function handleDeleteClick(event) {
-  requestModel.deleteArticle(event.target.parentNode.dataset.id).then(
+  requests.deleteArticle(event.target.parentNode.dataset.id).then(
         (ready) => {
           startApp();
         },
@@ -498,7 +498,7 @@ function handleEditClick(event) {
     article.summary = editForm.elements.addSummary.value;
     article.content = editForm.elements.addContent.value;
     article.picture = editForm.elements.addPicture.value;
-    requestModel.editArticle(article).then(
+    requests.editArticle(article).then(
             (ready) => {
               startApp();
             },
@@ -535,7 +535,7 @@ function handleAddClick() {
     article.id = article.title + (new Date()).toString();
     article.author = articleModel.curUser.login;
     article.createdAt = new Date();
-    requestModel.addArticle(article).then(
+    requests.addArticle(article).then(
             (ready) => {
               startApp();
             },

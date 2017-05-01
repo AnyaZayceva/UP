@@ -1,15 +1,18 @@
-const requestModel = (function () {
+const requests = (function () {
   function getArticles() {
     return new Promise((resolve, reject) => {
       const request = new XMLHttpRequest();
       request.open('GET', '/articles');
-
       request.onload = function () {
         if (this.status === 200) {
           resolve(JSON.parse(this.response, (key, value) => {
             if (key === 'createdAt') return new Date(value);
             return value;
           }));
+        } else {
+          let error = new Error(this.statusText);
+          error.code = this.status;
+          reject(error);
         }
       };
       request.onerror = function () {
@@ -27,6 +30,10 @@ const requestModel = (function () {
       request.onload = function () {
         if (this.status === 200) {
           resolve();
+        }else {
+            let error = new Error(this.statusText);
+            error.code = this.status;
+            reject(error);
         }
       };
       request.onerror = function () {
@@ -44,6 +51,10 @@ const requestModel = (function () {
       request.onload = function () {
         if (this.status === 200) {
           resolve();
+        }else {
+            let error = new Error(this.statusText);
+            error.code = this.status;
+            reject(error);
         }
       };
       request.onerror = function () {
@@ -61,6 +72,10 @@ const requestModel = (function () {
       request.onload = function () {
         if (this.status === 200) {
           resolve();
+        }else {
+            let error = new Error(this.statusText);
+            error.code = this.status;
+            reject(error);
         }
       };
       request.onerror = function () {
