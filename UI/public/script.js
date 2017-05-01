@@ -12,13 +12,6 @@ const articleModel = (function () {
     },
   ];
 
-  function getArticles(skip = 0, top = 10, filterConfig) {
-    return filterArtilces(articlesStorage, filterConfig).slice(skip, skip + top);
-  }
-
-  function getArticlesCount(filterConfig) {
-    return filterArtilces(articlesStorage, filterConfig).length;
-  }
 
   function filterArtilces(articles, filterConfig) {
     if (filterConfig) {
@@ -49,6 +42,13 @@ const articleModel = (function () {
       }
     }
     return articles.sort((firstItem, secondItem) => secondItem.createdAt - firstItem.createdAt);
+  }
+  function getArticles(skip = 0, top = 10, filterConfig) {
+    return filterArtilces(articlesStorage, filterConfig).slice(skip, skip + top);
+  }
+
+  function getArticlesCount(filterConfig) {
+    return filterArtilces(articlesStorage, filterConfig).length;
   }
 
   function getArticle(id) {
@@ -203,19 +203,13 @@ const articleRenderer = (function () {
     articleListNode = document.querySelector('.articles_list');
   }
 
-  function insertArticlesInDOM(articles) {
-    const articlesNodes = renderArticles(articles);
-    articlesNodes.forEach((node) => {
-      articleListNode.appendChild(node);
-    });
-  }
 
   function removeArticlesFromDom() {
     articleListNode.innerHTML = '';
   }
-
-  function renderArticles(articles) {
-    return articles.map(article => renderArticle(article));
+  function formatDate(d) {
+    return `${d.getDate()}/${d.getMonth() + 1}/${d.getFullYear()} ${
+            d.getHours()}:${d.getMinutes()}`;
   }
 
   function renderArticle(article) {
@@ -237,11 +231,16 @@ const articleRenderer = (function () {
     }
     return template.content.querySelector('.article').cloneNode(true);
   }
-
-  function formatDate(d) {
-    return `${d.getDate()}/${d.getMonth() + 1}/${d.getFullYear()} ${
-            d.getHours()}:${d.getMinutes()}`;
+  function renderArticles(articles) {
+    return articles.map(article => renderArticle(article));
   }
+  function insertArticlesInDOM(articles) {
+    const articlesNodes = renderArticles(articles);
+    articlesNodes.forEach((node) => {
+      articleListNode.appendChild(node);
+    });
+  }
+
 
   return {
     init,
@@ -256,7 +255,28 @@ const pagination = (function () {
   let currentPage;
   let showMoreButton;
   let showMoreCallback;
+  function getParams() {
+    return {
+      top: ITEMS_PER_PAGE,
+      skip: (currentPage - 1) * ITEMS_PER_PAGE,
+    };
+  }
+  function getTotalPages() {
+    return Math.ceil(total / ITEMS_PER_PAGE);
+  }
+  function showOrHideMoreButton() {
+    showMoreButton.hidden = getTotalPages() <= currentPage;
+  }
+  function nextPage() {
+    currentPage += 1;
+    showOrHideMoreButton();
 
+    return getParams();
+  }
+  function handleShowMoreClick() {
+    const paginationParams = nextPage();
+    showMoreCallback(paginationParams.skip, paginationParams.top);
+  }
   function init(_total, _showMoreCallback) {
     currentPage = 1;
     total = _total;
@@ -269,32 +289,6 @@ const pagination = (function () {
     return getParams();
   }
 
-  function handleShowMoreClick() {
-    const paginationParams = nextPage();
-    showMoreCallback(paginationParams.skip, paginationParams.top);
-  }
-
-  function getTotalPages() {
-    return Math.ceil(total / ITEMS_PER_PAGE);
-  }
-
-  function nextPage() {
-    currentPage += 1;
-    showOrHideMoreButton();
-
-    return getParams();
-  }
-
-  function getParams() {
-    return {
-      top: ITEMS_PER_PAGE,
-      skip: (currentPage - 1) * ITEMS_PER_PAGE,
-    };
-  }
-
-  function showOrHideMoreButton() {
-    showMoreButton.hidden = getTotalPages() <= currentPage;
-  }
 
   return {
     init,
@@ -305,16 +299,6 @@ const filter = (function () {
   let form;
   let submitButton;
   let filterChangedCallback;
-
-  function init(_filterChangedCallback) {
-    form = document.forms.filter;
-    submitButton = form.elements.submit;
-    submitButton.addEventListener('click', handleSubmitClick);
-    filterChangedCallback = _filterChangedCallback;
-
-    return getFilter();
-  }
-
   function getFilter() {
     const authorSelect = form.elements.author;
     const dateFromSelect = form.elements.date_from;
@@ -343,10 +327,18 @@ const filter = (function () {
       tags: _tags,
     };
   }
-
   function handleSubmitClick() {
     return filterChangedCallback(getFilter());
   }
+  function init(_filterChangedCallback) {
+    form = document.forms.filter;
+    submitButton = form.elements.submit;
+    submitButton.addEventListener('click', handleSubmitClick);
+    filterChangedCallback = _filterChangedCallback;
+
+    return getFilter();
+  }
+
 
   return {
     init,
@@ -364,15 +356,9 @@ const articleFullRenderer = (function () {
     document.getElementById('filter_id').style.display = 'none';
     document.getElementById('pagination_id').style.display = 'none';
   }
-
-  function insertArticlesInDOM(id) {
-    const articlesNode = renderArticle(articleModel.getArticle(id));
-    console.log(articlesNode);
-    articleListNode.appendChild(articlesNode);
-  }
-
-  function removeArticlesFromDom() {
-    articleListNode.innerHTML = '';
+  function formatDate(d) {
+    return `${d.getDate()} . ${d.getMonth() + 1} . ${d.getFullYear()}   ${
+            d.getHours()}:${d.getMinutes()}`;
   }
 
   function renderArticle(article) {
@@ -394,11 +380,16 @@ const articleFullRenderer = (function () {
     }
     return template.content.querySelector('.article_full').cloneNode(true);
   }
-
-  function formatDate(d) {
-    return `${d.getDate()} . ${d.getMonth() + 1} . ${d.getFullYear()}   ${
-            d.getHours()}:${d.getMinutes()}`;
+  function insertArticlesInDOM(id) {
+    const articlesNode = renderArticle(articleModel.getArticle(id));
+    console.log(articlesNode);
+    articleListNode.appendChild(articlesNode);
   }
+
+  function removeArticlesFromDom() {
+    articleListNode.innerHTML = '';
+  }
+
 
   return {
     init,
@@ -407,150 +398,33 @@ const articleFullRenderer = (function () {
   };
 }());
 
-document.addEventListener('DOMContentLoaded', startApp);
 
-function startApp() {
-  articleModel.replaceArticles().then(
-        (ready) => {
-          articleRenderer.init();
-          renderArticlesWithFilterConfig(0, 5);
-        }
-    );
-  const button = document.getElementById('sign_in_id');
-  const filterConfig = filter.init(renderArticlesWithFilterConfig);
-  renderArticlesWithFilterConfig(filterConfig);
-  function renderArticlesWithFilterConfig(filterConfig) {
-    articleRenderer.removeArticlesFromDom();
-    const total = articleModel.getArticlesCount(filterConfig);
-    const paginationParams = pagination.init(total, (skip, top) => {
-      renderArticles(skip, top, filterConfig);
-    });
-    renderArticles(paginationParams.skip, paginationParams.top, filterConfig);
-  }
-
-  function renderArticles(skip, top, filterConfig) {
-    const articles = articleModel.getArticles(skip, top, filterConfig);
-    articleRenderer.insertArticlesInDOM(articles);
-    const allArticles = document.getElementsByClassName('view_all');
-    [].forEach.call(allArticles, (item) => {
-      item.addEventListener('click', handleViewAllClick);
-    });
-    const allArticlesDelete = document.getElementsByClassName('delete_news');
-    [].forEach.call(allArticlesDelete, (item) => {
-      item.addEventListener('click', handleDeleteClick);
-    });
-    const allArticlesEdit = document.getElementsByClassName('edit_news');
-    [].forEach.call(allArticlesEdit, (item) => {
-      item.addEventListener('click', handleEditClick);
-    });
-    const button = document.getElementById('sign_in_id');
-    if (button.value === 'Войти') {
-      hideElements();
-    }
-    if (button.value === 'Выйти') {
-      showElements();
-    }
-  }
+function showElements() {
+  const allArticlesDelete = document.getElementsByClassName('delete_news');
+  [].forEach.call(allArticlesDelete, (item) => {
+    item.style.display = 'inline-block';
+  });
+  const allArticlesEdit = document.getElementsByClassName('edit_news');
+  [].forEach.call(allArticlesEdit, (item) => {
+    item.style.display = 'inline-block';
+  });
+}
+function hideElements() {
+  const allArticlesDelete = document.getElementsByClassName('delete_news');
+  [].forEach.call(allArticlesDelete, (item) => {
+    item.style.display = 'none';
+  });
+  const allArticlesEdit = document.getElementsByClassName('edit_news');
+  [].forEach.call(allArticlesEdit, (item) => {
+    item.style.display = 'none';
+  });
 }
 function handleViewAllClick(event) {
   articleRenderer.removeArticlesFromDom();
   articleFullRenderer.init();
   articleFullRenderer.insertArticlesInDOM(event.target.parentNode.dataset.id);
 }
-function handleMainClick() {
-  document.getElementById('filter_id').style.display = 'block';
-  document.getElementById('pagination_id').style.display = 'block';
-  document.querySelector('.add_news_class').style.display = 'none';
-  startApp();
-}
-function handleDeleteClick(event) {
-  requests.deleteArticle(event.target.parentNode.dataset.id).then(
-        (ready) => {
-          startApp();
-        },
-        error => console.log(error)
-    );
-    // articleModel.removeArticle(event.target.parentNode.dataset.id);
-    // startApp();
-}
-function handleEditClick(event) {
-  const editId = event.target.parentNode.dataset.id;
-  articleRenderer.removeArticlesFromDom();
-  document.querySelector('.add_news_class').style.display = 'block';
-  document.getElementById('filter_id').style.display = 'none';
-  document.getElementById('pagination_id').style.display = 'none';
-  const editForm = document.forms.addNewsForm;
-  editForm.elements.addId = editId;
-  editForm.elements.addTitle.value = (articleModel.getArticle(editId)).title;
-  editForm.elements.addSummary.value = (articleModel.getArticle(editId)).summary;
-  editForm.elements.addContent.value = (articleModel.getArticle(editId)).content;
-  editForm.elements.addTitle.value = (articleModel.getArticle(editId)).title;
-  editForm.elements.addPicture.value = (articleModel.getArticle(editId)).picture;
-  editForm.elements.addNewsButton.addEventListener('click', handleEditButtonClick);
 
-  function handleEditButtonClick() {
-    const article = {};
-    console.log(editForm.elements.addTitle.value);
-    article.id = editId;
-    article.createdAt = (articleModel.getArticle(editId)).createdAt;
-    article.author = (articleModel.getArticle(editId)).author;
-    article.title = editForm.elements.addTitle.value;
-    article.summary = editForm.elements.addSummary.value;
-    article.content = editForm.elements.addContent.value;
-    article.picture = editForm.elements.addPicture.value;
-    requests.editArticle(article).then(
-            (ready) => {
-              startApp();
-            },
-            error => alert(error)
-        );
-    // articleModel.editArticle(editForm.elements.addId, article);
-    document.querySelector('.add_news_class').style.display = 'none';
-    document.getElementById('filter_id').style.display = 'block';
-    document.getElementById('pagination_id').style.display = 'block';
-    const allArticlesDelete = document.getElementsByClassName('delete_news');
-
-        // startApp();
-  }
-}
-function handleAddClick() {
-  articleRenderer.removeArticlesFromDom();
-  document.querySelector('.add_news_class').style.display = 'block';
-  document.getElementById('filter_id').style.display = 'none';
-  document.getElementById('pagination_id').style.display = 'none';
-  const editForm = document.forms.addNewsForm;
-  editForm.elements.addTitle.value = '';
-  editForm.elements.addSummary.value = '';
-  editForm.elements.addContent.value = '';
-  editForm.elements.addTitle.value = '';
-  editForm.elements.addPicture.value = '';
-  editForm.elements.addNewsButton.addEventListener('click', handleAddButtonClick);
-  function handleAddButtonClick() {
-    const article = {};
-    console.log(editForm.elements.addTitle.value);
-    article.title = editForm.elements.addTitle.value;
-    article.summary = editForm.elements.addSummary.value;
-    article.content = editForm.elements.addContent.value;
-    article.picture = editForm.elements.addPicture.value;
-    article.id = article.title + (new Date()).toString();
-    article.author = articleModel.curUser.login;
-    article.createdAt = new Date();
-    requests.addArticle(article).then(
-            (ready) => {
-              startApp();
-            },
-            error => console.log(error)
-        );
-        // articleModel.addArticle(article);
-    console.log(article);
-    document.querySelector('.add_news_class').style.display = 'none';
-    document.getElementById('filter_id').style.display = 'block';
-    document.getElementById('pagination_id').style.display = 'block';
-
-
-        // startApp();
-  }
-}
 function handleLogInClick() {
   const button = document.getElementById('sign_in_id');
   const inputLogin = document.getElementById('name');
@@ -584,24 +458,144 @@ function handleLogInClick() {
     }
   }
 }
-function showElements() {
-  const allArticlesDelete = document.getElementsByClassName('delete_news');
-  [].forEach.call(allArticlesDelete, (item) => {
-    item.style.display = 'inline-block';
-  });
-  const allArticlesEdit = document.getElementsByClassName('edit_news');
-  [].forEach.call(allArticlesEdit, (item) => {
-    item.style.display = 'inline-block';
-  });
+function startApp() {
+  function renderArticlesWithFilterConfig(filterConfig) {
+    articleRenderer.removeArticlesFromDom();
+    const total = articleModel.getArticlesCount(filterConfig);
+    function renderArticles(skip, top, filterConfig) {
+      const articles = articleModel.getArticles(skip, top, filterConfig);
+      articleRenderer.insertArticlesInDOM(articles);
+      const allArticles = document.getElementsByClassName('view_all');
+      [].forEach.call(allArticles, (item) => {
+        item.addEventListener('click', handleViewAllClick);
+      });
+      const allArticlesDelete = document.getElementsByClassName('delete_news');
+      [].forEach.call(allArticlesDelete, (item) => {
+        item.addEventListener('click', handleDeleteClick);
+      });
+      const allArticlesEdit = document.getElementsByClassName('edit_news');
+      [].forEach.call(allArticlesEdit, (item) => {
+        item.addEventListener('click', handleEditClick);
+      });
+      const button = document.getElementById('sign_in_id');
+      if (button.value === 'Войти') {
+        hideElements();
+      }
+      if (button.value === 'Выйти') {
+        showElements();
+      }
+    }
+
+    const paginationParams = pagination.init(total, (skip, top) => {
+      renderArticles(skip, top, filterConfig);
+    });
+    renderArticles(paginationParams.skip, paginationParams.top, filterConfig);
+  }
+  articleModel.replaceArticles().then(
+        (ready) => {
+          articleRenderer.init();
+          renderArticlesWithFilterConfig(0, 5);
+        }
+    );
+
+  const button = document.getElementById('sign_in_id');
+  const filterConfig = filter.init(renderArticlesWithFilterConfig);
+  renderArticlesWithFilterConfig(filterConfig);
 }
-function hideElements() {
-  const allArticlesDelete = document.getElementsByClassName('delete_news');
-  [].forEach.call(allArticlesDelete, (item) => {
-    item.style.display = 'none';
-  });
-  const allArticlesEdit = document.getElementsByClassName('edit_news');
-  [].forEach.call(allArticlesEdit, (item) => {
-    item.style.display = 'none';
-  });
+function handleDeleteClick(event) {
+  requests.deleteArticle(event.target.parentNode.dataset.id).then(
+        (ready) => {
+          startApp();
+        },
+        error => console.log(error)
+    );
+    // articleModel.removeArticle(event.target.parentNode.dataset.id);
+    // startApp();
 }
+function handleMainClick() {
+  document.getElementById('filter_id').style.display = 'block';
+  document.getElementById('pagination_id').style.display = 'block';
+  document.querySelector('.add_news_class').style.display = 'none';
+  startApp();
+}
+function handleEditClick(event) {
+  const editId = event.target.parentNode.dataset.id;
+  articleRenderer.removeArticlesFromDom();
+  document.querySelector('.add_news_class').style.display = 'block';
+  document.getElementById('filter_id').style.display = 'none';
+  document.getElementById('pagination_id').style.display = 'none';
+
+  const editForm = document.forms.addNewsForm;
+  function handleEditButtonClick() {
+    const article = {};
+    console.log(editForm.elements.addTitle.value);
+    article.id = editId;
+    article.createdAt = (articleModel.getArticle(editId)).createdAt;
+    article.author = (articleModel.getArticle(editId)).author;
+    article.title = editForm.elements.addTitle.value;
+    article.summary = editForm.elements.addSummary.value;
+    article.content = editForm.elements.addContent.value;
+    article.picture = editForm.elements.addPicture.value;
+    requests.editArticle(article).then(
+            (ready) => {
+              startApp();
+            },
+            error => alert(error)
+        );
+        // articleModel.editArticle(editForm.elements.addId, article);
+    document.querySelector('.add_news_class').style.display = 'none';
+    document.getElementById('filter_id').style.display = 'block';
+    document.getElementById('pagination_id').style.display = 'block';
+    const allArticlesDelete = document.getElementsByClassName('delete_news');
+
+        // startApp();
+  }
+  editForm.elements.addId = editId;
+  editForm.elements.addTitle.value = (articleModel.getArticle(editId)).title;
+  editForm.elements.addSummary.value = (articleModel.getArticle(editId)).summary;
+  editForm.elements.addContent.value = (articleModel.getArticle(editId)).content;
+  editForm.elements.addTitle.value = (articleModel.getArticle(editId)).title;
+  editForm.elements.addPicture.value = (articleModel.getArticle(editId)).picture;
+  editForm.elements.addNewsButton.addEventListener('click', handleEditButtonClick);
+}
+function handleAddClick() {
+  articleRenderer.removeArticlesFromDom();
+  document.querySelector('.add_news_class').style.display = 'block';
+  document.getElementById('filter_id').style.display = 'none';
+  document.getElementById('pagination_id').style.display = 'none';
+
+  const editForm = document.forms.addNewsForm;
+  function handleAddButtonClick() {
+    const article = {};
+    console.log(editForm.elements.addTitle.value);
+    article.title = editForm.elements.addTitle.value;
+    article.summary = editForm.elements.addSummary.value;
+    article.content = editForm.elements.addContent.value;
+    article.picture = editForm.elements.addPicture.value;
+    article.id = article.title + (new Date()).toString();
+    article.author = articleModel.curUser.login;
+    article.createdAt = new Date();
+    requests.addArticle(article).then(
+            (ready) => {
+              startApp();
+            },
+            error => console.log(error)
+        );
+        // articleModel.addArticle(article);
+    console.log(article);
+    document.querySelector('.add_news_class').style.display = 'none';
+    document.getElementById('filter_id').style.display = 'block';
+    document.getElementById('pagination_id').style.display = 'block';
+
+
+        // startApp();
+  }
+  editForm.elements.addTitle.value = '';
+  editForm.elements.addSummary.value = '';
+  editForm.elements.addContent.value = '';
+  editForm.elements.addTitle.value = '';
+  editForm.elements.addPicture.value = '';
+  editForm.elements.addNewsButton.addEventListener('click', handleAddButtonClick);
+}
+document.addEventListener('DOMContentLoaded', startApp);
 

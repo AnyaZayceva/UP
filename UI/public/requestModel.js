@@ -10,7 +10,7 @@ const requests = (function () {
             return value;
           }));
         } else {
-          let error = new Error(this.statusText);
+          const error = new Error(this.statusText);
           error.code = this.status;
           reject(error);
         }
@@ -30,10 +30,10 @@ const requests = (function () {
       request.onload = function () {
         if (this.status === 200) {
           resolve();
-        }else {
-            let error = new Error(this.statusText);
-            error.code = this.status;
-            reject(error);
+        } else {
+          const error = new Error(this.statusText);
+          error.code = this.status;
+          reject(error);
         }
       };
       request.onerror = function () {
@@ -51,10 +51,10 @@ const requests = (function () {
       request.onload = function () {
         if (this.status === 200) {
           resolve();
-        }else {
-            let error = new Error(this.statusText);
-            error.code = this.status;
-            reject(error);
+        } else {
+          const error = new Error(this.statusText);
+          error.code = this.status;
+          reject(error);
         }
       };
       request.onerror = function () {
@@ -72,10 +72,10 @@ const requests = (function () {
       request.onload = function () {
         if (this.status === 200) {
           resolve();
-        }else {
-            let error = new Error(this.statusText);
-            error.code = this.status;
-            reject(error);
+        } else {
+          const error = new Error(this.statusText);
+          error.code = this.status;
+          reject(error);
         }
       };
       request.onerror = function () {
