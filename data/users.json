@@ -1,2 +1,16 @@
-{"_id":{"$oid":"591064c1c23f3a5768739823"},"login":"admin","password":"admin"}
-{"_id":{"$oid":"591064c1c23f3a5768739824"},"login":"anya","password":"anya"}
+[
+  {
+    "_id": {
+      "$oid": "591064c1c23f3a5768739823"
+    },
+    "login": "admin",
+    "password": "admin"
+  },
+  {
+    "_id": {
+      "$oid": "591064c1c23f3a5768739824"
+    },
+    "login": "anya",
+    "password": "anya"
+  }
+]

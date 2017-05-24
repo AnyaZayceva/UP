@@ -1,197 +1,440 @@
 html, body {
+    background-color: #cdffd5;
+    background-size: cover;
     margin: 0;
-    padding: 0;
     height: 100%;
-    background-color: aliceblue;
 }
-.wrapper{
+
+.wrapper {
     display: flex;
     flex-direction: column;
     height: 100%;
 }
-#user_name_label{
 
-    display:block;
+.all {
+    flex: 1 0 auto;
 }
-.header {
-    position: fixed;
+
+.main {
     display: inline-block;
+}
+
+.author-filter {
+    display: none;
     width: 100%;
-    margin: 0;
+    height: 2000px;
+    overflow: hidden;
+    position: fixed;
+    top: 0px;
+}
+
+.search-author {
+    position: fixed;
+    margin: 12% 79%;
+}
+
+.search-date {
+    position: fixed;
+    width: 22%;
+    margin: 16% 75%;
+}
+
+.log-out {
+    position: absolute;
+    margin: -3% 85%;
+    width: 10%;
+}
+
+.log-in {
+    position: absolute;
+    margin: -3% 85%;
+    width: 10%;
+}
+
+.user {
+    position: absolute;
+    width: 15%;
+    margin: -2.5% 65%;
+}
+
+.add {
+    position: fixed;
+    width: 22%;
+    margin: 8% 73%;
+}
+
+.author-filter .content-author-filter {
+    text-align: center;
+    margin: 26% 76%;
+    width: 20%;
+    height: 10%;
+    padding: 10px;
+    border-radius: 5px;
+    box-shadow: 0px 0px 10px #000;
+}
+
+#filter {
+    margin-top: 3%;
+    font-size: 20px;
+}
+
+#date-filter-from {
+    font-size: 20px;
+}
+
+#date-filter-to {
+    font-size: 20px;
+}
+
+.close {
     background-color: #080105;
-    height: 105px;
     color: white;
+    margin: 1%;
+    padding: 3% 10%;
+    font-size: x-large;
+}
+
+.find-author {
+    background-color: #080105;
+    color: white;
+    margin: 10%;
+    font-size: x-large;
+    padding: 3% 10%;
+}
+
+.date-filter {
+    display: none;
+    width: 100%;
+    height: 2000px;
+    overflow: hidden;
+    position: fixed;
+    top: 0px;
+}
+
+.date-filter .content-date-filter {
+    text-align: center;
+    margin: 26% 76%;
+    width: 20%;
+    height: 15%;
+    padding: 10px;
+    border-radius: 5px;
+    box-shadow: 0px 0px 10px #000;
+}
+
+.find-date {
+    background-color: #080105;
+    color: white;
+    padding: 1.5% 10% 0%;
+    font-size: x-large;
+    margin: 8.5%;
+}
+
+.header {
+    z-index: 10;
+    font-size: 200%;
+    width: 100%;
+    color: white;
+    background-color: #000000;
+}
+
+.container {
+    display: inline;
+}
+
+li {
+    cursor: pointer;
+    list-style-type: none;
+    display: inline-block;
+    background-color: #080105;
+    color: white;
+    padding: 5px 25px 5px 25px;
+    border: 2px solid white;
+}
+
+.btn-main {
+    list-style-type: none;
+    display: inline-block;
+    color: #ffffff;
+    padding-top: 1%;
+    font-size: 35px;
+    cursor: pointer;
+}
+
+.tape {
+    width: 70%;
+    background: #acc9bd;
+    box-sizing: border-box;
+    float: left;
+    margin: 1% 2% 1%;
+    text-align: center;
+    padding-bottom: 1%;
+}
+
+.news {
+    display: inline-block;
+    margin: 1%;
+    text-align: center;
+    width: 93%;
+}
+
+.news img {
+    width: 90%;
+}
+
+h3, h4 {
+    color: black;
+    text-align: center;
+    font-size: 30px;
+    margin: 0;
+}
+
+.news p {
+    box-sizing: border-box;
+    font-size: 22px;
+    color: black;
+    padding: 10px 40px 10px 40px;
+}
+
+.btn {
+    cursor: pointer;
+    background-color: #080105;
+    color: white;
+    padding: 5px 25px 5px 25px;
+    font-size: 15px;
+    float: right;
+}
+
+.delete {
+    font-size: 15px;
+    display: none;
+    float: right;
+    margin: 0px 5% 0px 0px;
+    cursor: pointer;
+    background-color: #080105;
+    color: white;
+    padding: 5px 25px 5px 25px;
+}
+
+.edit {
+    font-size: 15px;
+    cursor: pointer;
+    display: none;
+    background-color: #080105;
+    color: white;
+    padding: 5px 25px 5px 25px;
+    float: right;
+    margin: 0px 5% 0px 0px;
+}
+
+.author {
+    display: inline-block;
+    font-size: 12px;
+    color: black;
+    outline: none;
+    padding: 1.7% 1% 1.7% 1.7%;
+    float: left;
+    border-radius: 5px;
+    box-shadow: 0px 0px 10px #000;
+    font-size: 15px;
+    margin: -2% 0%;
+}
+
+.show-more {
+    font-size: 20px;
+    cursor: pointer;
+    margin-top: 1%;
+    margin-bottom: 1%;
+    margin-left: 32%;
+    background-color: #080105;
+    color: white;
+    padding: 5px 25px 5px 25px;
+}
+
+.add-news-text {
+    margin-top: 4%;
+    border-radius: 10px;
+    margin-left: 20%;
+    color: #000000;
+    width: 50%;
+    font-size: 20px;
+    padding-left: 2%;
+}
+
+.add-news-text b {
+    font-size: 30px;
+    padding-left: 5%
+}
+
+.add-news-box {
+    resize: none;
+    border-radius: 5px;
+}
+
+.add-news-button-add {
+    cursor: pointer;
+    font-size: 30px;
+    margin-top: 1%;
+    margin-bottom: 4%;
+    margin-left: 40%;
+    width: 21%;
+    border-radius: 5px;
+    border-color: white;
+    background-color: #080105;
+    color: white;
+    padding: 5px 25px 5px 25px;
 }
 
 .authorization {
-    margin-right: 25px;
-    padding: 0;
-    float: right;
+    text-align: center;
+    margin-top: 10%;
+    border-radius: 10px;
+    margin-left: 30%;
+    width: 40%;
+    height: 40%;
+    padding-left: 2%;
+    position: fixed;
+    text-align: center;
+    box-shadow: 0px 0px 10px #000;
+}
+
+.auth-login {
+    margin-top: 9%;
+    border-radius: 5px;
+}
+
+.auth-password {
+    margin-top: 9%;
+    border-radius: 5px;
+}
+
+#auth-input-login {
+    width: 300px;
+    font-size: 25px;
+}
+
+#autn-input-password {
+    width: 300px;
+    font-size: 25px;
+}
+
+.auth-button-sign-up {
+    cursor: pointer;
+    background-color: #080105;
+    color: white;
+    font-size: 30px;
+    padding: 5px 25px 5px 25px;
+}
+
+.error {
+    margin: 12% 5% 60% 40%;
+    padding: 5px 5px;
+    text-align: center;
+    border-radius: 10px;
+    position: fixed;
+}
+
+.news-name {
+    font-size: 30px;
+    margin-top: 1%;
+    width: 70%;
+    margin-left: 14%;
+    font-weight: 800;
+    text-align: center;
+    padding: .5em 1em;
+    outline: none;
+    border-radius: 3px;
+    box-shadow: 0 1px rgba(255, 255, 255, .2) inset,
+    0 3px 5px rgba(0, 1, 6, .5),
+    0 0 1px 1px rgba(0, 1, 6, .2);
+}
+
+.newsa-detail {
+    display: inline-block;
+}
+
+.news-imgbtn {
+    margin-top: 1%;
+    margin-left: 5%;
+    width: auto;
+    display: inline-block;
+}
+
+.news-image {
+    padding: 10px 40px 10px 40px;
+}
+
+.news-detail {
     text-align: center;
 }
 
-.label {
-    float: left;
-    margin-left: 25px;
+.news-image img {
+    margin-top: 2%;
+    width: auto;
 }
 
-.sign_in {
-    background-color: #080105;
-    color: white;
-    padding: 5px 25px 5px 25px;
-    margin-bottom: 10px;
-}
-.content{
-    display: inline-block;
-    flex: 1 0 auto;
-}
-.articles_list {
-    margin-top: 130px;
-    float: left;
-    width: 950px;
-    overflow: auto;
-    margin-left: 30px;
-    margin-bottom: 20px;
-}
-.edit_form{
-    float: left;
-    width: 950px;
-    overflow: auto;
-}
-.fixed_information{
-    float: left;
-    width: 950px;
-    overflow: auto;
-    margin-left: 30px;
-    margin-bottom: 20px;
-}
-
-textarea{
-    margin-left: 280px;
-    width: 90%;
-}
-.article{
-    padding-bottom: 20px;
-}
-.title{
-    margin-left: 30px;
-    cursor: pointer;
-}
-.title:hover{
-    opacity: 0.7;
-}
-.tags{
-    list-style: none;
-}
-.tags li{
+.news-buttons {
     display: inline;
 }
-.add_news_class{
-    position:relative;
-    top:-155px;
-    display: none;
-    width:70%
-}
-.add_news_class .main_page{
-    margin-left:661px
-}
-.add-edit-news-field{
-    margin-left:650px;
-    margin-bottom:20px;
-}
-.add-news-button-form{
-    margin-left:665px;
-    margin-bottom:20px;
-    margin-top:20px;
-}
-.view_all{
-    float: right;
-    margin-right: 200px;
-    background-color: #080105;
-    color: white;
-    padding: 5px 25px 5px 25px;
-}
-.add-news-button-form{
-    background-color: #080105;
-    color: white;
-    padding: 5px 25px 5px 25px;
-}
-.main_page{
-    background-color: #080105;
-    color: white;
-    padding: 5px 25px 5px 25px;
-}
-.edit_news{
-    display: none;
-    background-color: #080105;
-    color: white;
-    padding: 5px 25px 5px 25px;
-}
-.delete_news{
-    display: none;
-    background-color: #080105;
-    color: white;
-    padding: 5px 25px 5px 25px;
-}
-.filter{
-    position: fixed;
-    margin-top: 250px;
-    margin-left: 1000px;
-    float: right;
-    width:450px;
-    text-align: center;
-    overflow: auto;
-}
-.footer{
-    flex: 0 0 auto;
-    background-color: #080105;
-    color: white;
-}
-.pagination{
-    margin-left: 650px;
 
-}
-.view_more{
-    background-color: #080105;
-    color: white;
-    padding: 5px 25px 5px 25px;
-    margin-bottom: 15px;
-}
-.add_article {
-    display: none;
-    background-color: #080105;
-    color: white;
-    padding: 5px 25px 5px 25px;
-}
-.find{
-    background-color: #080105;
-    color: white;
-    padding: 5px 25px 5px 25px;
-}
-.edit{
-    background-color: #080105;
-    color: white;
-    padding: 5px 25px 5px 25px;
-}
-.add_new_article{
-    background-color: #080105;
-    color: white;
-    padding: 5px 25px 5px 25px;
-    margin-left: 650px;
-    margin-top: 20px;
-}
-.remove{
-    background-color: #080105;
-    color: white;
-    padding: 5px 25px 5px 25px;
-}
-.select_tags{
-    margin-top: 10px;
-    margin-bottom: 10px;
-}
-a{
+.news-delete {
+    margin-top:%;
     cursor: pointer;
+    font-size: 20px;
+    margin-right: 25%;
+    color: white;
+    border-radius: 3px;
+    margin-top: 2%;
+    margin-bottom: 1%;
 }
-a:hover {
-    opacity: 0.3;
+
+.news-edit {
+    cursor: pointer;
+    font-size: 20px;
+    color: white;
+    border-radius: 3px;
+    margin-right: 25%;
+    margin-bottom: 1%;
 }
+
+.news-author {
+
+    margin-top: 2%;
+    margin-left: 30%;
+    display: inline-block;
+    font-size: 30px;
+    text-decoration: none;
+    outline: none;
+    border-radius: 3px;
+    box-shadow: 0 1px rgba(255, 255, 255, .2) inset,
+    0 3px 5px rgba(0, 1, 6, .5),
+    0 0 1px 1px rgba(0, 1, 6, .2);
+    padding: 1.5% 1% 1.5% 1.5%;
+    float: left;
+}
+
+.news-text {
+    margin-top: 1%;
+    font-size: 18px;
+    color: black;
+    margin-bottom: 2%;
+    margin-right: 10%
+    float: right;
+    width: 70%;
+    height: auto;
+    display: inline-block;
+    box-sizing: border-box;
+    background: #acc9bd;
+    font-weight: 300;
+    padding: 10px 40px 10px 40px;
+}
+
+.footer {
+    font-size: 15px;
+    background-color: #000000;
+    color: #fff;
+    flex: 0 0 auto;
+    height: 10%;
+}
+
+
+

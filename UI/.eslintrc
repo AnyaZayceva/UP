@@ -14,6 +14,7 @@
     "no-alert":"off",
     "no-undef":"off",
     "comma-dangle":"off",
-    "no-shadow":"off"
- }
+    "no-shadow":"off",
+    "no-restricted-syntax":"off"
+  }
 }
